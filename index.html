@@ -1,293 +1,758 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Weiyu Zhao is an M.S.-Ph.D. student at Harbin Institute of Technology, working on embodied intelligence and robot learning."
+      content="Weiyu Zhao, Ph.D. student at Harbin Institute of Technology. Research in embodied intelligence, robot learning, and human motion synthesis."
     />
-    <title>Weiyu Zhao | Personal Homepage</title>
+    <meta name="theme-color" content="#0c0f14" />
+    <meta
+      property="og:title"
+      content="Weiyu Zhao — Embodied Intelligence & Robot Learning"
+    />
+    <meta
+      property="og:description"
+      content="Ph.D. student at Harbin Institute of Technology, exploring how machines perceive, learn, and act in the physical world."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://weiyu0726.github.io/" />
+    <meta
+      property="og:image"
+      content="https://weiyu0726.github.io/assets/profile-photo.png"
+    />
+    <link rel="canonical" href="https://weiyu0726.github.io/" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <script>
+      try {
+        const theme = localStorage.getItem("weiyu-theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+          document.querySelector('meta[name="theme-color"]').content =
+            theme === "light" ? "#fcfcfd" : "#0c0f14";
+        }
+      } catch {}
+    </script>
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Weiyu Zhao — Personal Homepage</title>
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-
-    <header class="topbar" aria-label="Primary navigation">
-      <a class="site-name" href="#home">Weiyu Zhao</a>
-      <nav class="nav-links" aria-label="Page sections">
-        <a href="#about">About</a>
-        <a href="#education">Background</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="wordmark" href="#home" aria-label="Weiyu Zhao, home"
+          ><span class="monogram" aria-hidden="true">wz<span>.</span></span
+          ><span>Weiyu Zhao</span></a
+        >
+        <div class="nav-actions">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="#about" class="is-active">About</a>
+            <a href="#education">Background</a>
+            <a href="#publications">Research</a>
+            <a href="#contact">Contact <span aria-hidden="true">↗</span></a>
+          </nav>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Switch to light theme"
+            title="Switch to light theme"
+            hidden
+          >
+            <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+              />
+            </svg>
+            <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 14.2A8.5 8.5 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
 
-    <main class="page-shell" id="home">
-      <aside class="profile-panel" aria-label="Profile">
-        <img
-          class="portrait"
-          src="assets/profile-photo.png"
-          alt="Portrait of Weiyu Zhao"
-        />
-
-        <h3>Weiyu Zhao</h3>
-        <p class="name-cn">赵维雨</p>
-        <p class="role">
-          Ph.D. student<br />
-          School of Computer Science<br />
-          Harbin Institute of Technology
-        </p>
-
-        <div class="profile-links" aria-label="Profile links">
-          <a href="mailto:weiyuzhao66@gmail.com">Email</a>
-          <span>GitHub</span>
-           <a href="https://scholar.google.com/citations?user=nts55-EAAAAJ&hl=zh-CN"> Google Scholar</a>
-          <span>CV</span>
-        </div>
-      </aside>
-
-      <div class="content-column" id="content">
-        <section class="intro-section reveal" id="about">
-          <h2 class="section-heading">About Me</h2>
-          <div class="about-copy">
-            <p>
-              Hi! I am Weiyu Zhao, a Ph.D. student in the
-              <a href="https://cs.hit.edu.cn/" target="_blank" rel="noreferrer">
-                School of Computer Science
-              </a>
-              at
-              <a href="https://www.hit.edu.cn/" target="_blank" rel="noreferrer">
-                Harbin Institute of Technology
-              </a>.
-              I am advised by
-              <a
-                href="https://homepage.hit.edu.cn/zhangshengping?lang=zh"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Prof. Shengping Zhang
-              </a>
-              and 
-              <a
-                href="https://homepage.hit.edu.cn/liushaohui?lang=zh"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Assoc. Prof. Shaohui Liu. 
-              </a>
-              I received my Bachelor of Engineering degree in
-              Information Management and Information Systems from
-              <a href="https://www.hfut.edu.cn/" target="_blank" rel="noreferrer">
-                Hefei University of Technology
-              </a>.
-              My research focuses on embodied
-              intelligence, especially learning robot manipulation from human
-              videos, audio and text-driven motion synthesis, and mobile
-              manipulation. 
-            </p>
+    <main id="content">
+      <section
+        class="hero section-shell"
+        id="home"
+        aria-labelledby="hero-title"
+      >
+        <div class="hero-copy" id="about">
+          <p class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span> Embodied
+            intelligence &amp; robot learning
+          </p>
+          <div class="identity">
+            <img
+              class="portrait"
+              src="assets/profile-photo.png"
+              width="88"
+              height="104"
+              fetchpriority="high"
+              alt="Portrait of Weiyu Zhao"
+            />
+            <div>
+              <h1 id="hero-title">
+                Weiyu Zhao<span lang="zh-CN">赵维雨</span>
+              </h1>
+              <p class="affiliation">
+                Ph.D. student · Harbin Institute of Technology
+              </p>
+            </div>
           </div>
+          <p class="hero-statement">
+            Learning to act in<br />the <em>physical world.</em>
+          </p>
+          <p class="hero-description">
+            I study embodied intelligence, with a focus on learning robot
+            manipulation from human videos, audio and text-driven motion
+            synthesis, and mobile manipulation.
+          </p>
+          <div class="hero-links" aria-label="Profile links">
+            <a class="button button-primary" href="#publications"
+              >Explore my research <span aria-hidden="true">↘</span></a
+            >
+            <a
+              class="text-link"
+              href="https://scholar.google.com/citations?user=nts55-EAAAAJ&amp;hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Google Scholar <span aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="social-links">
+            <a href="mailto:weiyuzhao66@gmail.com"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 6 9 7 9-7" /></svg
+              >Email</a
+            >
+            <a
+              href="https://github.com/Weiyu0726"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" /></svg
+              >GitHub <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
 
-          <a
-            class="taishan-note"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>
-              Beyond research, I am a loyal supporter of Shandong Taishan FC.
-            </span>
+        <div class="hero-aside">
+          <section class="biography" aria-label="Academic introduction">
+            <p class="section-kicker">A little about me</p>
+            <div class="bio-copy">
+              <p>
+                I am a Ph.D. student in the
+                <a
+                  href="https://cs.hit.edu.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >School of Computer Science</a
+                >
+                at
+                <a
+                  href="https://www.hit.edu.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Harbin Institute of Technology</a
+                >, advised by
+                <a
+                  href="https://homepage.hit.edu.cn/zhangshengping?lang=zh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Prof. Shengping Zhang</a
+                >
+                and
+                <a
+                  href="https://homepage.hit.edu.cn/liushaohui?lang=zh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Assoc. Prof. Shaohui Liu</a
+                >. I received my B.Eng. in Information Management and
+                Information Systems from
+                <a
+                  href="https://www.hfut.edu.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Hefei University of Technology</a
+                >.
+              </p>
+            </div>
+          </section>
+          <aside class="personal-note" aria-label="Beyond research">
+            <div class="personal-note-copy">
+              <span class="section-kicker">Away from the desk</span>
+              <p>Always curious. Always a <span>Taishan supporter.</span></p>
+              <span class="note-description"
+                >Beyond research, I am a loyal supporter of Shandong Taishan
+                FC.</span
+              >
+            </div>
             <img
               src="assets/shandong-taishan-logo.png"
+              width="64"
+              height="64"
+              loading="lazy"
               alt="Shandong Taishan FC logo"
             />
-          </a>
-        </section>
+          </aside>
+        </div>
+      </section>
 
-        <section class="content-section reveal" id="education">
-          <h2 class="background-heading">Background</h2>
-          <div class="background-list">
-            <article class="background-item">
+      <section
+        class="background-section section-shell"
+        id="education"
+        aria-labelledby="education-title"
+      >
+        <div class="section-topline">
+          <div>
+            <p class="section-kicker">01 / Background</p>
+            <h2 id="education-title">
+              The path so far<span class="heading-dot">.</span>
+            </h2>
+          </div>
+        </div>
+        <div class="education-list">
+          <article class="education-item">
+            <div class="school-logo-wrap">
               <img
-                class="school-logo"
                 src="assets/hit-logo.png"
                 alt="Harbin Institute of Technology logo"
+                width="72"
+                height="72"
+                loading="lazy"
+                decoding="async"
               />
-              <div class="background-copy">
-                <p class="degree-line">Ph.D. Student. Mar. 2025 - Present</p>
-                <p class="degree-line degree-line-sub">
-                  Master of Engineering. Sep. 2023 - Mar. 2025
-                </p>
-                <p class="school-line">
-                  <a href="https://cs.hit.edu.cn/" target="_blank" rel="noreferrer">
-                    School of Computer Science
-                  </a>
-                </p>
-                <p class="school-line">
-                  <a href="https://www.hit.edu.cn/" target="_blank" rel="noreferrer">
-                    Harbin Institute of Technology
-                  </a>
-                </p>
+            </div>
+            <div class="school-info">
+              <h3>
+                <a
+                  href="https://www.hit.edu.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Harbin Institute of Technology
+                  <span aria-hidden="true">↗</span></a
+                >
+              </h3>
+              <a
+                class="school-department"
+                href="https://cs.hit.edu.cn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >School of Computer Science</a
+              >
+              <div class="degree">
+                <span>Ph.D. student</span><time>Mar. 2025 — Present</time>
               </div>
-            </article>
-
-            <article class="background-item">
+              <div class="degree">
+                <span>Master of Engineering</span
+                ><time>Sep. 2023 — Mar. 2025</time>
+              </div>
+            </div>
+          </article>
+          <article class="education-item">
+            <div class="school-logo-wrap">
               <img
-                class="school-logo"
                 src="assets/hfut-logo.png"
                 alt="Hefei University of Technology logo"
+                width="72"
+                height="72"
+                loading="lazy"
+                decoding="async"
               />
-              <div class="background-copy">
-                <p class="degree-line">Bachelor of Engineering. Sep. 2019 - Jun. 2023</p>
-                <p class="school-line">
-                  <a href="https://som.hfut.edu.cn/" target="_blank" rel="noreferrer">
-                    School of Management
-                  </a>
-                </p>
-                <p class="school-line">
-                  <a href="https://www.hfut.edu.cn/" target="_blank" rel="noreferrer">
-                    Hefei University of Technology
-                  </a>
-                </p>
+            </div>
+            <div class="school-info">
+              <h3>
+                <a
+                  href="https://www.hfut.edu.cn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Hefei University of Technology
+                  <span aria-hidden="true">↗</span></a
+                >
+              </h3>
+              <a
+                class="school-department"
+                href="https://som.hfut.edu.cn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >School of Management</a
+              >
+              <div class="degree">
+                <span>Bachelor of Engineering</span
+                ><time>Sep. 2019 — Jun. 2023</time>
               </div>
-            </article>
-          </div>
-        </section>
+              <p class="degree-detail">
+                Information Management and Information Systems
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <section class="content-section reveal" id="publications">
-          <h2 class="section-heading">Publications</h2>
-          <div class="publication-list">
-            <article class="publication-item">
-              <img
-                class="publication-teaser"
+      <section
+        class="research-section section-shell"
+        id="publications"
+        aria-labelledby="research-title"
+      >
+        <div class="section-topline">
+          <div>
+            <p class="section-kicker">02 / Research</p>
+            <h2 id="research-title">
+              Selected publications<span class="heading-dot">.</span>
+            </h2>
+          </div>
+          <a
+            class="text-link section-more"
+            href="https://scholar.google.com/citations?user=nts55-EAAAAJ&amp;hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Google Scholar <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="research-toolbar">
+          <p>Exploring how machines perceive, move, and interact.</p>
+          <div
+            class="filter-group"
+            role="group"
+            aria-label="Filter publications by topic"
+            hidden
+          >
+            <button type="button" data-filter="all" aria-pressed="true">
+              All work <span id="publication-count">07</span></button
+            ><button
+              type="button"
+              data-filter="perception"
+              aria-pressed="false"
+            >
+              3D vision</button
+            ><button type="button" data-filter="robotics" aria-pressed="false">
+              Robotics</button
+            ><button type="button" data-filter="motion" aria-pressed="false">
+              Human motion
+            </button>
+          </div>
+        </div>
+        <p
+          class="sr-only"
+          id="filter-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <div class="publication-list">
+          <article
+            class="publication"
+            id="map-wam-paper"
+            data-topic="robotics"
+            aria-labelledby="map-wam-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">01</span
+              ><img
+                src="assets/map-wam-framework.webp"
+                alt="MaP-WAM framework for memory-grounded planning and plan-conditioned robot execution"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
+              />
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">arXiv 2026</span
+                ><span class="topic-label">MaP-WAM · Robot learning</span>
+              </div>
+              <h3 id="map-wam-title">
+                <span>Memory as Plans:</span> World-Action Modeling with
+                Memory-Grounded Planning
+              </h3>
+              <p class="authors">
+                Sizhe Zhao, Haozhe Xie, <strong>Weiyu Zhao</strong>, Chenchu
+                Zhang, Huan Wang, Chenyang Wang, Qinglin Liu, Shengping
+                Zhang<sup>†</sup>
+              </p>
+              <div class="paper-links">
+                <a
+                  href="https://arxiv.org/abs/2609.11561"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Paper <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  href="https://sizhezhao.github.io/projects/MaP-WAM/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Project <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  href="https://github.com/aipixel/MaP-WAM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Code <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="publication"
+            id="gaussians-to-graphs-paper"
+            data-topic="perception"
+            aria-labelledby="gaussians-to-graphs-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">02</span
+              ><img
+                src="assets/gaussians-to-graphs.png"
+                alt="Overview of open-vocabulary 3D scene graph generation from Gaussians"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
+              />
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">ACM MM 2026</span
+                ><span class="topic-label">3D scene understanding</span>
+              </div>
+              <h3 id="gaussians-to-graphs-title">
+                <span>From Gaussians to Graphs:</span> Open-Vocabulary 3D Scene
+                Graph Generation for Scene Understanding
+              </h3>
+              <p class="authors">
+                Jinyuan Wu, <strong>Weiyu Zhao</strong>, Qinglin Liu, Ru Li<sup>†</sup>
+              </p>
+              <div class="paper-links">
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Paper unavailable"
+                >
+                  Paper
+                </button>
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Project unavailable"
+                >
+                  Project
+                </button>
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Code unavailable"
+                >
+                  Code
+                </button>
+              </div>
+            </div>
+          </article>
+          <article
+            class="publication"
+            id="queryme-paper"
+            data-topic="perception"
+            aria-labelledby="queryme-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">03</span
+              ><img
                 src="assets/queryme-teaser.png"
-                alt="QueryMe project teaser"
+                alt="Overview of QueryMe's multimodal 3D affordance grounding framework"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
               />
-              <div class="publication-copy">
-                <h3>
-                  QueryMe: Query-Driven Open-Vocabulary 3D Object Affordances
-                  Grounding from Multimodal Evidence
-                </h3>
-                <p class="publication-authors">
-                  <strong>Weiyu Zhao</strong>, Ru Li, Jiaqi Liu, Sizhe Zhao,
-                  Qinglin Liu, Shengping Zhang&#8224;
-                </p>
-                <p class="publication-venue">CVPR 2026</p>
-                <div class="publication-links" aria-label="QueryMe links">
-                  <a href="./index.html">paper</a>
-                  <a href="./index.html">web</a>
-                  <a href="./index.html">code</a>
-                </div>
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">CVPR 2026</span
+                ><span class="topic-label">3D understanding</span>
               </div>
-            </article>
-
-            <article class="publication-item">
-              <img
-                class="publication-teaser"
+              <h3 id="queryme-title">
+                <span>QueryMe:</span> Query-Driven Open-Vocabulary 3D Object
+                Affordances Grounding from Multimodal Evidence
+              </h3>
+              <p class="authors">
+                <strong>Weiyu Zhao</strong>, Ru Li, Jiaqi Liu, Sizhe Zhao,
+                Qinglin Liu, Shengping Zhang<sup>†</sup>
+              </p>
+              <div class="paper-links">
+                <a
+                  href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhao_QueryMe_Query-Driven_Open-Vocabulary_3D_Object_Affordances_Grounding_from_Multimodal_Evidence_CVPR_2026_paper.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Paper <span aria-hidden="true">↗</span></a
+                >
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Project unavailable"
+                >
+                  Project
+                </button>
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Code unavailable"
+                >
+                  Code
+                </button>
+              </div>
+            </div>
+          </article>
+          <article
+            class="publication"
+            id="tapsampling-paper"
+            data-topic="robotics"
+            aria-labelledby="tapsampling-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">04</span
+              ><img
                 src="assets/tapsampling-teaser.png"
-                alt="TapSampling framework teaser"
+                alt="TapSampling framework for robotic manipulation"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
               />
-              <div class="publication-copy">
-                <h3>
-                  TapSampling: Inference-Time Sampling with a
-                  Task-Progress-Understanding Verifier for Robotic Manipulation
-                </h3>
-                <p class="publication-authors">
-                  Sizhe Zhao, Shengping Zhang&#8224;, Shuo Yang,
-                  <strong>Weiyu Zhao</strong>, Shuigen Wang, Xiangyang Ji
-                </p>
-                <p class="publication-venue">ICML 2026</p>
-                <div class="publication-links" aria-label="TapSampling links">
-                  <a href="./index.html">paper</a>
-                  <a
-                    href="https://aipixel.github.io/TapSampling/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    web
-                  </a>
-                  <a
-                    href="https://github.com/aipixel/TapSampling"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    code
-                  </a>
-                </div>
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">ICML 2026</span
+                ><span class="topic-label">Robot learning</span>
               </div>
-            </article>
-
-            <article class="publication-item">
-              <img
-                class="publication-teaser"
+              <h3 id="tapsampling-title">
+                <span>TapSampling:</span> Inference-Time Sampling with a
+                Task-Progress-Understanding Verifier for Robotic Manipulation
+              </h3>
+              <p class="authors">
+                Sizhe Zhao, Shengping Zhang<sup>†</sup>, Shuo Yang,
+                <strong>Weiyu Zhao</strong>, Shuigen Wang, Xiangyang Ji
+              </p>
+              <div class="paper-links">
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Paper unavailable"
+                >
+                  Paper
+                </button>
+                <a
+                  href="https://aipixel.github.io/TapSampling/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Project <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  href="https://github.com/aipixel/TapSampling"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Code <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="publication"
+            id="dialogen-paper"
+            data-topic="motion"
+            aria-labelledby="dialogen-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">05</span
+              ><img
                 src="assets/dialogen-teaser.png"
-                alt="DialoGen project teaser"
+                alt="DialoGen interactive dialog gesture generation framework"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
               />
-              <div class="publication-copy">
-                <h3>
-                  DialoGen: Towards Dialog Gesture Generation via
-                  Identity-Decoupled Style Guidance in Interactive Diffusion
-                  Model
-                </h3>
-                <p class="publication-authors">
-                  <strong>Weiyu Zhao</strong>, Chenyang Wang&#8224;, Liangxiao Hu,
-                  Zonglin Li, Wei Yu, Shengping Zhang
-                </p>
-                <p class="publication-venue">
-                  AAAI 2026 (<span class="venue-highlight">Oral</span>)
-                </p>
-                <div class="publication-links" aria-label="DialoGen links">
-                  <a
-                    href="https://ojs.aaai.org/index.php/AAAI/article/view/38327"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    paper
-                  </a>
-                  <a href="./index.html">web</a>
-                  <a href="./index.html">code</a>
-                </div>
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">AAAI 2026</span
+                ><span class="oral-badge">Oral presentation</span>
               </div>
-            </article>
-
-            <article class="publication-item">
-              <img
-                class="publication-teaser"
+              <h3 id="dialogen-title">
+                <span>DialoGen:</span> Towards Dialog Gesture Generation via
+                Identity-Decoupled Style Guidance in Interactive Diffusion Model
+              </h3>
+              <p class="authors">
+                <strong>Weiyu Zhao</strong>, Chenyang Wang<sup>†</sup>,
+                Liangxiao Hu, Zonglin Li, Wei Yu, Shengping Zhang
+              </p>
+              <div class="paper-links">
+                <a
+                  href="https://ojs.aaai.org/index.php/AAAI/article/view/38327"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Paper <span aria-hidden="true">↗</span></a
+                >
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Project unavailable"
+                >
+                  Project
+                </button>
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Code unavailable"
+                >
+                  Code
+                </button>
+              </div>
+            </div>
+          </article>
+          <article
+            class="publication"
+            id="rea-paper"
+            data-topic="motion"
+            aria-labelledby="rea-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">06</span
+              ><img
                 src="assets/REA-teaser.png"
-                alt="REA-Listener project teaser"
+                alt="REA-Listener real-time listening head generation framework"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
               />
-              <div class="publication-copy">
-                <h3>
-                  REA-Listener: Real-Time Listening Head Generation with Dynamic
-                  Emotion Modeling and Flexible Modality Adaptation
-                </h3>
-                <p class="publication-authors">
-                  Sizhe Zhao*, Chenyang Wang*, <strong>Weiyu Zhao</strong>,
-                  Zonglin Li, Ming Li, Shengping Zhang&#8224;
-                </p>
-                <p class="publication-venue">ACM MM 2025</p>
-                <div class="publication-links" aria-label="REA-Listener links">
-                  <a href="https://dl.acm.org/doi/abs/10.1145/3746027.3755093">paper</a>
-                  <a href="https://aipixel.github.io/REA-Listener/">web</a>
-                  <a href="https://github.com/aipixel/REA-Listener">code</a>
-                </div>
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">ACM MM 2025</span
+                ><span class="topic-label">Human motion</span>
               </div>
-            </article>
-          </div>
-        </section>
+              <h3 id="rea-title">
+                <span>REA-Listener:</span> Real-Time Listening Head Generation
+                with Dynamic Emotion Modeling and Flexible Modality Adaptation
+              </h3>
+              <p class="authors">
+                Sizhe Zhao*, Chenyang Wang*, <strong>Weiyu Zhao</strong>,
+                Zonglin Li, Ming Li, Shengping Zhang<sup>†</sup>
+              </p>
+              <div class="paper-links">
+                <a
+                  href="https://dl.acm.org/doi/abs/10.1145/3746027.3755093"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Paper <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  href="https://aipixel.github.io/REA-Listener/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Project <span aria-hidden="true">↗</span></a
+                >
+                <a
+                  href="https://github.com/aipixel/REA-Listener"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Code <span aria-hidden="true">↗</span></a
+                >
+              </div>
+            </div>
+          </article>
+          <article
+            class="publication"
+            id="diffugesture-paper"
+            data-topic="motion"
+            aria-labelledby="diffugesture-title"
+          >
+            <div class="paper-visual">
+              <span class="paper-number" aria-hidden="true">07</span>
+              <img
+                src="assets/diffugesture.gif"
+                alt="DiffuGesture examples of generated gestures in two-person dialogue"
+                loading="lazy"
+                decoding="async"
+                width="640"
+                height="360"
+              />
+            </div>
+            <div class="paper-copy">
+              <div class="paper-meta">
+                <span class="venue">ICMI 2023 Workshop</span
+                ><span class="topic-label">GENEA Challenge · Human motion</span>
+              </div>
+              <h3 id="diffugesture-title">
+                <span>The DiffuGesture entry to the GENEA Challenge 2023:</span>
+                Generating Human Gesture From Two-person Dialogue With Diffusion
+                Models
+              </h3>
+              <p class="authors">
+                <strong>Weiyu Zhao</strong>, Liangxiao Hu<sup>†</sup>, Shengping Zhang
+              </p>
+              <div class="paper-links">
+                <a
+                  href="https://openreview.net/forum?id=swc28UDR8Wk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Paper <span aria-hidden="true">↗</span></a
+                >
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Project unavailable"
+                >
+                  Project
+                </button>
+                <button
+                  class="paper-link-disabled"
+                  type="button"
+                  disabled
+                  aria-label="Code unavailable"
+                >
+                  Code
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <section class="contact-section reveal" id="contact">
-          <p class="section-label">Contact</p>
-          <a class="email-link" href="mailto:weiyuzhao66@gmail.com">
-            weiyuzhao66@gmail.com
-          </a>
-        </section>
-      </div>
+      <section
+        class="contact-section section-shell"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div>
+          <p class="section-kicker">03 / Get in touch</p>
+          <h2 id="contact-title">
+            Let's connect<span class="heading-dot">.</span>
+          </h2>
+          <p>For research conversations and opportunities to collaborate.</p>
+        </div>
+        <a class="contact-email" href="mailto:weiyuzhao66@gmail.com"
+          >weiyuzhao66@gmail.com <span aria-hidden="true">↗</span></a
+        >
+      </section>
     </main>
-
-    <footer class="site-footer">
-      <p>© <span id="currentYear"></span> Weiyu Zhao. Built for GitHub Pages.</p>
+    <footer class="site-footer section-shell">
+      <p>© <span id="currentYear">2026</span> Weiyu Zhao</p>
+      <span>Perceive. Learn. Act.</span
+      ><a href="#home">Back to top <span aria-hidden="true">↑</span></a>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
