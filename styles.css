@@ -286,8 +286,9 @@ svg {
   gap: 20px;
 }
 .portrait {
-  width: 76px;
-  height: 90px;
+  width: 96px;
+  height: 114px;
+  flex-shrink: 0;
   object-fit: cover;
   object-position: center 25%;
   border-radius: 11px;
@@ -921,8 +922,8 @@ sup {
     gap: 19px;
   }
   .portrait {
-    width: 68px;
-    height: 82px;
+    width: 80px;
+    height: 96px;
   }
   h1 {
     font-size: 44px;
