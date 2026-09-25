@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/page/midivla/styles.css?v=findings-reader-1"><script src="/page/midivla/app.js?v=2331945dd2" defer></script>
   <link rel="stylesheet" href="/page/midivla/noise-sweep.css?v=tight-vertical-3"><script src="/page/midivla/assets/noise-experiments.js?v=20260925-layer1-35000" defer></script><script src="/page/midivla/noise-sweep.js?v=editorial-2" defer></script>
 <link rel="stylesheet" href="/page/midivla/findings.css?v=comparison-4">
-<link rel="stylesheet" href="/page/midivla/desktop.css?v=editorial-1"><link rel="canonical" href="https://weiyu0726.github.io/midivla/">
+<link rel="stylesheet" href="/page/midivla/desktop.css?v=findings-bridge-1"><link rel="canonical" href="https://weiyu0726.github.io/midivla/">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -39,7 +39,12 @@
       <figure class="studio-study-figure">
         <button class="studio-study-image" data-figure="scalenoise" data-title="Finding 2 · Constraint placement and cross-scale sensitivity" aria-label="Enlarge the full Finding 2 figure"><img src="/page/midivla/assets/figure-scalenoise.webp" width="1974" height="710" alt="Finding 2 original study: noise sensitivity and reconstructions under three training constraint placements"><span class="study-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></path></svg>View full size</span></button>
       </figure>
-    </details></section></section>
+    </details></section>
+<aside class="findings-takeaway" id="findings-takeaway" aria-label="From findings to method">
+  <span class="section-kicker">FROM FINDINGS TO METHOD</span>
+  <p>Reconstruction alone does not isolate action, and constraining later scales leaves earlier paths for action to bypass the bottleneck. MiDiVLA therefore applies the degeneration constraint at <strong>the first, coarsest scale</strong> to concentrate action dynamics while finer scales model residual appearance.</p>
+</aside>
+</section>
 <section class="method-section section" id="method"><div class="wrap"><div class="section-kicker">02 / THE METHOD</div><div class="section-heading"><h2>Separate the dynamics.<br>Keep the context.</h2><p>Three training objectives shape a compact,<br class="desktop"> compositional latent action space.</p></div><div class="method-steps"><article><span class="method-number">01</span><h3>Reconstruct</h3><p>Multi-scale tokens predict the future observation. The hierarchy retains both transition dynamics and visual detail.</p><div class="equation">S<sub>x</sub> + {r<sup>1</sup>, r<sup>2</sup>, r<sup>3</sup>} → Ŝ<sub>x+t</sub></div></article><article><span class="method-number">02</span><h3>Concentrate</h3><p>Corrupt the coarsest scale and require a return to the initial state. This encourages a first-scale action bottleneck.</p><div class="equation">S<sub>x</sub> + {r̃<sup>1</sup>, r<sup>2</sup>, r<sup>3</sup>} → S<sub>x</sub></div></article><article><span class="method-number">03</span><h3>Compose</h3><p>Add adjacent first-scale action embeddings to predict a two-step transition, promoting reusable dynamics.</p><div class="equation">a<sub>x,t</sub> + a<sub>x+t,t</sub> → ã<sub>x,2t</sub></div></article></div><button class="figure-button" data-figure="framework" data-title="MiDiVLA · Multi-scale dynamics framework"><img src="/page/midivla/assets/figure-framework.webp" loading="lazy" width="1850" height="1010" alt="MiDiVLA architecture showing shared reconstruction, degeneration, and temporal composition branches"><span>Explore the full architecture <b>↗</b></span></button><div class="method-bottom"><b>From latent actions to executable control.</b><p>Infer first-scale tokens from Internet video → pretrain the VLA to predict these tokens from image and language → fine-tune on a small set of robot trajectories.</p></div></div></section>
 <section class="results wrap section" id="results">
   <div class="section-kicker">03 / THE EVIDENCE</div>

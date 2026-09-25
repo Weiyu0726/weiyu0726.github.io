@@ -149,3 +149,23 @@ footer > span, footer > a:last-child { color: #92a27e; font-size: 11px; }
 .method-steps p, .method-bottom > p { color: #6e7668; }
 .benchmark-card figcaption p, .benchmark-note, .benchmark-legend { color: #6e7864; }
 .task-key, .table-footnote, .paper-table-heading p, .table-count { color: #758069; }
+
+/* Connect the two experiments to the first-scale design decision. */
+.findings-takeaway {
+  margin-top: 40px;
+  padding: 4px 0 4px 26px;
+  border-left: 3px solid #b5662b;
+}
+.findings-takeaway .section-kicker { margin-bottom: 12px; }
+.findings-takeaway p {
+  max-width: 1040px;
+  color: #59634f;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+.findings-takeaway strong { color: #35432b; font-weight: 650; }
+@media (max-width: 700px) {
+  .findings-takeaway { margin-top: 30px; padding-left: 18px; }
+  .findings-takeaway p { font-size: 17px; line-height: 1.75; }
+}
