@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DialoGen — Dialog Gesture Generation · AAAI 2026</title>
+<meta name="description" content="DialoGen generates synchronized, identity-aware gestures for both people in a conversation. AAAI 2026 Oral. Explore the video, method, and results.">
+<meta name="theme-color" content="#ffffff"><meta property="og:title" content="DialoGen · Two people. One conversation."><meta property="og:description" content="Identity-decoupled style guidance for interactive dialog gesture generation. AAAI 2026 Oral."><meta property="og:type" content="website"><meta property="og:image" content="https://weiyu0726.github.io/page/dialogen/assets/social.webp">
+<link rel="icon" type="image/svg+xml" href="/page/dialogen/assets/favicon.svg"><link rel="stylesheet" href="/page/dialogen/styles.css"><link rel="stylesheet" href="/page/dialogen/method-figures.css"><script src="/page/dialogen/app.js" defer></script>
+<link rel="canonical" href="https://weiyu0726.github.io/dialogen/">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav-shell"><div class="nav wrap"><a class="brand" href="#top" aria-label="DialoGen home"><span class="dialog-mark" aria-hidden="true"><i></i><i></i></span>DialoGen</a><nav aria-label="Main navigation"><a href="#film">Film</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a></nav><a class="nav-paper" href="https://ojs.aaai.org/index.php/AAAI/article/view/38327" target="_blank" rel="noopener">Read paper <span aria-hidden="true">↗</span></a></div></header>
+<main id="main">
+<section class="hero wrap" id="top">
+<div class="venue"><span>AAAI 2026</span><span class="venue-dot"></span>Oral presentation</div>
+<h1>Dialo<span>Gen</span><em>.</em></h1>
+<h2>Towards Dialog Gesture Generation via<br class="desktop-break"> Identity-Decoupled Style Guidance in Interactive Diffusion Model</h2>
+<div class="authors"><a href="https://weiyu0726.github.io/" target="_blank" rel="noopener">Weiyu Zhao<sup>1</sup></a><a href="https://wangchenyang.cn/" target="_blank" rel="noopener">Chenyang Wang<sup>1,†</sup></a><a href="https://huliangxiao.github.io/" target="_blank" rel="noopener">Liangxiao Hu<sup>1</sup></a><a href="https://zoranzonglinli.github.io/" target="_blank" rel="noopener">Zonglin Li<sup>1</sup></a><span>Wei Yu<sup>2</sup></span><a href="https://homepage.hit.edu.cn/zhangshengping?lang=zh" target="_blank" rel="noopener">Shengping Zhang<sup>1</sup></a></div>
+<p class="affiliations"><span><sup>1</sup> Harbin Institute of Technology</span><span><sup>2</sup> Tsinghua University</span><span class="corresponding">† Corresponding author</span></p>
+<div class="hero-actions"><a class="button primary" href="https://ojs.aaai.org/index.php/AAAI/article/download/38327/42289" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></svg>Paper PDF</a><button class="button code-soon" type="button" disabled aria-label="GitHub code, coming soon"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.542 0-.267-.01-.975-.015-1.914-3.13.68-3.79-1.508-3.79-1.508-.511-1.299-1.25-1.645-1.25-1.645-1.022-.699.077-.685.077-.685 1.13.08 1.725 1.16 1.725 1.16 1.005 1.723 2.637 1.225 3.28.937.102-.728.393-1.225.715-1.507-2.498-.284-5.124-1.249-5.124-5.562 0-1.229.44-2.233 1.16-3.02-.117-.284-.503-1.428.11-2.978 0 0 .945-.303 3.095 1.153A10.79 10.79 0 0 1 12 6.184c.956.005 1.918.13 2.817.378 2.148-1.456 3.092-1.153 3.092-1.153.615 1.55.229 2.694.112 2.979.722.786 1.159 1.79 1.159 3.019 0 4.325-2.63 5.275-5.136 5.553.404.35.766 1.043.766 2.103 0 1.519-.014 2.744-.014 3.116 0 .3.203.651.774.54A11.25 11.25 0 0 0 12 .75Z"/></svg><span>Code</span><span class="coming-soon">Coming soon</span></button><a class="button" href="#film"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg>Watch film</a><a class="button text-button" href="#citation">BibTeX <span aria-hidden="true">↗</span></a></div>
+</section>
+<section class="film-section wrap" id="film" aria-labelledby="film-heading">
+<div class="section-topline"><span class="eyebrow">THE PROJECT FILM</span><span class="micro">02:53 <span class="small-dot">·</span> SOUND ON FOR CONVERSATION</span></div>
+<div class="film-player">
+<video id="project-film" controls playsinline preload="metadata" poster="/page/dialogen/assets/film-poster.webp" aria-label="DialoGen project film with motivating examples, method comparisons, style transfer, and ablation studies" aria-describedby="film-description"><source src="/page/dialogen/assets/dialogen-film.mp4" type="video/mp4"><track kind="chapters" src="/page/dialogen/assets/chapters.vtt" srclang="en" label="Chapters" default>Your browser does not support video. <a href="/page/dialogen/assets/dialogen-film.mp4">Download the film.</a></video>
+</div>
+<div class="film-caption"><div><h2 id="film-heading">Two people. One conversation.</h2><p id="film-description">Synchronized gestures, responsive interaction, and individual style.</p></div><a class="download-link" href="/page/dialogen/assets/dialogen-film.mp4" download="DialoGen-project-film.mp4" aria-label="Download the DialoGen project film">Download film <span aria-hidden="true">↓</span></a></div>
+<div class="chapters" aria-label="Jump to a video chapter"><button data-time="3" aria-label="Play the task chapter at 0:03"><span class="chapter-index">01</span><span>The task<small>00:03</small></span><span class="chapter-arrow" aria-hidden="true">↗</span></button><button data-time="35.2" aria-label="Play method comparison at 0:35"><span class="chapter-index">02</span><span>Method comparison<small>00:35</small></span><span class="chapter-arrow" aria-hidden="true">↗</span></button><button data-time="91.3" aria-label="Play style guidance at 1:31"><span class="chapter-index">03</span><span>Style guidance<small>01:31</small></span><span class="chapter-arrow" aria-hidden="true">↗</span></button><button data-time="139.6" aria-label="Play ablation study at 2:20"><span class="chapter-index">04</span><span>Ablation study<small>02:20</small></span><span class="chapter-arrow" aria-hidden="true">↗</span></button></div><p id="video-status" class="sr-only" role="status"></p>
+</section>
+<section class="overview wrap" aria-labelledby="overview-title"><div class="section-label"><span class="eyebrow">THE IDEA</span><span class="line"></span></div><div class="overview-grid"><h2 id="overview-title">Gesture is a dialogue,<br><span>not a solo act.</span></h2><div class="overview-copy"><p>Conversation involves more than a speaker moving to their own voice. Both people speak, listen, respond, and express themselves in a characteristic way.</p><p>DialoGen jointly generates gestures for both interlocutors from conversational audio. An interactive dual-diffusion model coordinates their motions, while identity-decoupled style guidance preserves each person’s gestural traits.</p></div></div><div class="principles"><article><span class="principle-number">01 / JOINT GENERATION</span><h3>Both sides, together.</h3><p>Two weight-sharing denoisers generate temporally aligned gesture sequences.</p></article><article><span class="principle-number">02 / MUTUAL INTERACTION</span><h3>Motion that responds.</h3><p>Estimated interaction weights model the influence between both participants.</p></article><article><span class="principle-number">03 / INDIVIDUAL STYLE</span><h3>A sense of identity.</h3><p>Contrastive style learning separates identity-specific traits from gesture content.</p></article></div></section>
+<section class="method-section" id="method"><div class="wrap"><div class="section-label"><span class="eyebrow">HOW IT WORKS</span><span class="line"></span></div><div class="section-heading"><h2>Learn the style.<br>Generate the interaction.</h2><p>Two stages connect personal gesture style<br class="desktop-break"> with the dynamics of a conversation.</p></div>
+
+
+
+
+
+
+
+
+
+<section class="method-figure-section" id="panel-style" aria-labelledby="style-title">
+  <div class="method-figure-heading"><span class="method-figure-number">01</span><h3 id="style-title">Identity-decoupled style guidance</h3></div>
+  <figure class="paper-figure paper-figure-style">
+    <button class="paper-figure-image" type="button" data-image="/page/dialogen/assets/paper-style.svg" data-caption="DialoGen — original paper Figure 3" aria-label="Enlarge original paper Figure 3">
+      <img src="/page/dialogen/assets/paper-style.svg" width="1250" height="515" alt="Original paper Figure 3: gesture sequences, TCN and Transformer, global and statistical feature heads, and contrastive supervision." loading="lazy" decoding="async">
+    </button>
+    <figcaption><p><span>Figure 3.</span> The style extractor learns identity-specific representations from gesture history through supervised contrastive learning.</p><span class="paper-figure-hint">Click to enlarge ↗</span></figcaption>
+  </figure>
+</section>
+
+<section class="method-figure-section" id="panel-generation" aria-labelledby="generation-title">
+  <div class="method-figure-heading"><span class="method-figure-number">02</span><h3 id="generation-title">Interactive dual diffusion</h3></div>
+  <figure class="paper-figure paper-figure-generation">
+    <button class="paper-figure-image" type="button" data-image="/page/dialogen/assets/paper-framework.svg" data-caption="DialoGen — original paper Figure 2" aria-label="Enlarge original paper Figure 2">
+      <img src="/page/dialogen/assets/paper-framework.svg" width="2535" height="1260" alt="Original paper Figure 2: two style-guided diffusion streams linked by mutual interaction estimation, producing paired dialog gestures." loading="lazy" decoding="async">
+    </button>
+    <figcaption><p><span>Figure 2.</span> Two weight-sharing denoisers combine identity-style guidance with mutual interaction estimation to generate paired gestures.</p><span class="paper-figure-hint">Click to enlarge ↗</span></figcaption>
+  </figure>
+</section>
+<details class="evidence-details"><summary>Explore the learned style space <span aria-hidden="true">+</span></summary><figure><button class="figure-button" data-image="/page/dialogen/assets/style-space.webp" data-caption="Style-space visualization from the oral presentation" aria-label="Enlarge style-space visualization"><img src="/page/dialogen/assets/style-space.webp" loading="lazy" alt="UMAP and t-SNE projections show identity clusters for two random seeds"></button><figcaption>UMAP and t-SNE projections of identity-style representations, as shown in the oral presentation.</figcaption></figure></details>
+</div></section>
+<section class="results-section wrap" id="results"><div class="section-label"><span class="eyebrow">THE EVIDENCE</span><span class="line"></span></div><div class="section-heading"><h2>Better coordination.<br>Distinctive gestures.</h2><p>Evaluation on the Talking With Hands dataset.<br class="desktop-break"> Values from the AAAI 2026 oral presentation.</p></div>
+<div class="stats"><div><span class="stat-label">GEOMETRIC DISTANCE ↓</span><strong>1.179</strong><p><span>8.8% lower</span> than Audio2Photoreal</p></div><div><span class="stat-label">DUAL-SPEAKER SRGR ↑</span><strong>4.19</strong><p>Highest among the compared methods</p></div><div><span class="stat-label">GEOMETRIC DIVERSITY →</span><strong>123.94</strong><p>Close to ground truth: <span>123.90</span></p></div></div>
+<div class="table-wrap" role="region" aria-label="Quantitative comparison, horizontally scrollable" tabindex="0"><table><caption>Quantitative results on TWH</caption><thead><tr><th scope="col">Method</th><th scope="col">FD<sub>g</sub> ↓</th><th scope="col">FD<sub>k</sub> ↓</th><th scope="col">SRGR ↑</th><th scope="col">DSRGR ↑</th><th scope="col">Div<sub>sample</sub> ↑</th><th scope="col">Div<sub>g</sub> →</th><th scope="col">Div<sub>k</sub> →</th></tr></thead><tbody><tr><th scope="row">DiffGesture</th><td>1.740</td><td>3.479</td><td>2.85</td><td>3.68</td><td>410.13</td><td>138.02</td><td>189.55</td></tr><tr><th scope="row">Dual-DiffGesture</th><td>1.687</td><td>3.611</td><td>2.28</td><td>3.43</td><td><b>460.53</b></td><td>117.38</td><td>149.90</td></tr><tr><th scope="row">DiffuseStyleGesture+</th><td>1.356</td><td>2.809</td><td>3.32</td><td>3.87</td><td>266.95</td><td>91.84</td><td>128.57</td></tr><tr><th scope="row">Dual-DSG+</th><td>1.410</td><td>2.731</td><td>3.30</td><td>3.75</td><td>273.68</td><td>109.59</td><td>157.27</td></tr><tr><th scope="row">Audio2Photoreal</th><td>1.293</td><td>2.413</td><td>3.37</td><td>3.90</td><td>231.38</td><td>84.17</td><td>117.91</td></tr><tr class="ours"><th scope="row">DialoGen <span>Ours</span></th><td><b>1.179</b></td><td><b>2.326</b></td><td><b>3.61</b></td><td><b>4.19</b></td><td>293.47</td><td><b>123.94</b></td><td><b>175.23</b></td></tr><tr class="ground-truth"><th scope="row">Ground truth</th><td>0</td><td>0</td><td>—</td><td>—</td><td>—</td><td>123.90</td><td>173.47</td></tr></tbody></table></div>
+<p class="table-note">↓ Lower is better. ↑ Higher is better. → Closer to ground truth is better. Bold indicates the best generated result in each column.</p>
+<div class="metric-notes"><p><strong>SRGR</strong> measures semantic relevance between gestures and text.</p><p><strong>DSRGR</strong> extends this evaluation to interaction appropriateness in a two-speaker setting.</p></div>
+<details class="evidence-details"><summary>User study: realism, interaction, and style <span aria-hidden="true">+</span></summary><div class="study-content"><button class="figure-button" data-image="/page/dialogen/assets/user-study.webp" data-caption="User-study results from the oral presentation" aria-label="Enlarge user-study results"><img src="/page/dialogen/assets/user-study.webp" loading="lazy" alt="User preference chart comparing DialoGen with DiffGesture, DSG+, Audio2Photoreal, and ground truth"></button><div><h3>How do people perceive the results?</h3><p>The study evaluates human likeness, speech–gesture alignment, holistic diversity, interaction appropriateness, and identity-style similarity.</p><p>The reported comparisons favor DialoGen over the three baselines, including interaction and identity-style criteria.</p><a class="inline-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/38327" target="_blank" rel="noopener">Study details in the paper ↗</a></div></div></details>
+</section>
+<section class="citation-section" id="citation"><div class="wrap citation-grid"><div><span class="eyebrow">BUILD ON THIS WORK</span><h2>Citation</h2><p>If you find DialoGen useful in your research,<br class="desktop-break"> please consider citing our paper.</p><a class="inline-link" href="https://doi.org/10.1609/aaai.v40i16.38327" target="_blank" rel="noopener">DOI: 10.1609/aaai.v40i16.38327 ↗</a></div><div class="bibtex-shell"><div class="code-top"><span>BibTeX</span><button id="copy-citation" type="button">Copy citation <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@article{zhao2026dialogen,
+  title   = {DialoGen: Towards Dialog Gesture Generation via
+             Identity-Decoupled Style Guidance in Interactive Diffusion Model},
+  author  = {Zhao, Weiyu and Wang, Chenyang and Hu, Liangxiao and
+             Li, Zonglin and Yu, Wei and Zhang, Shengping},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {40},
+  number  = {16},
+  pages   = {13253--13261},
+  year    = {2026},
+  doi     = {10.1609/aaai.v40i16.38327}
+}</code></pre><span id="copy-status" class="sr-only" role="status"></span></div></div></section>
+</main>
+<footer class="wrap"><a class="brand" href="#top"><span class="dialog-mark" aria-hidden="true"><i></i><i></i></span>DialoGen</a><p>AAAI 2026 · Research project<br><span>Video examples: TWH dataset · Avatars: Mixamo</span></p><a href="https://weiyu0726.github.io/" target="_blank" rel="noopener">Weiyu Zhao <span aria-hidden="true">↗</span></a></footer>
+<dialog id="figure-dialog"><div class="dialog-toolbar"><p id="figure-caption"></p><button id="close-figure" aria-label="Close enlarged figure">Close ×</button></div><img id="large-figure" alt=""></dialog>
+</body></html>

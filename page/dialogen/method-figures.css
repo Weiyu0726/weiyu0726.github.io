@@ -1,0 +1,20 @@
+/* Preserve the paper's original artwork and aspect ratios. */
+.method-section{background:#fff;padding:54px 0 38px}
+.method-section>.wrap>.section-heading{margin-bottom:42px}
+.method-figure-section{padding-top:28px;border-top:1px solid #e5e7e9}
+.method-figure-section+.method-figure-section{margin-top:54px}
+.method-figure-heading{display:flex;align-items:baseline;gap:18px;max-width:1100px;margin:0 auto 32px}
+.method-figure-number{font-size:11px;color:#d85e17;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:1px}
+.method-figure-heading h3{font-family:Manrope,'DM Sans',sans-serif;font-size:24px;font-weight:600;line-height:1.35;letter-spacing:-.6px;margin:0;color:#252728}
+.paper-figure{margin:0 auto;width:100%}
+.paper-figure-style{max-width:920px}
+.paper-figure-generation{max-width:1100px}
+.paper-figure-image{display:block;width:100%;border:0;padding:0;background:#fff;cursor:zoom-in;border-radius:3px}
+.paper-figure-image img{display:block;width:100%;height:auto;object-fit:contain}
+.paper-figure figcaption{display:flex;align-items:baseline;gap:26px;justify-content:space-between;border-top:1px solid #eceef0;padding:17px 0 0;margin-top:26px}
+.paper-figure figcaption p{font-size:12px;line-height:1.8;color:#747980;margin:0;max-width:790px}
+.paper-figure figcaption p>span{font-weight:600;color:#444c54}
+.paper-figure-hint{font-size:10px;white-space:nowrap;color:#a17a5d}
+.method-section .evidence-details{margin-top:40px}
+@media(max-width:1050px){.paper-figure-style{width:90%}.method-figure-heading h3{font-size:23px}.paper-figure figcaption{gap:20px}}
+@media(max-width:760px){.method-section{padding:42px 0 30px}.method-section>.wrap>.section-heading{margin-bottom:30px}.method-figure-section{padding-top:23px}.method-figure-section+.method-figure-section{margin-top:39px}.method-figure-heading{gap:12px;margin-bottom:23px;align-items:flex-start}.method-figure-number{font-size:10px;padding-top:5px}.method-figure-heading h3{font-size:20px;line-height:1.4;letter-spacing:-.4px;max-width:330px}.paper-figure-style{width:100%}.paper-figure figcaption{display:block;margin-top:19px;padding-top:13px}.paper-figure figcaption p{font-size:11px;line-height:1.75}.paper-figure-hint{display:block;font-size:9px;margin-top:9px}.method-section .evidence-details{margin-top:31px}}
