@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="QueryMe learns from human–object interactions, language, and 3D geometry to ground open-vocabulary object affordances. CVPR 2026.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="QueryMe · CVPR 2026">
+  <meta property="og:description" content="Query-Driven Open-Vocabulary 3D Object Affordances Grounding from Multimodal Evidence">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://weiyu0726.github.io/page/queryme/assets/queryme-football-teaser.png">
+  <link rel="icon" type="image/svg+xml" href="/page/queryme/assets/favicon.svg">
+  <link rel="stylesheet" href="/page/queryme/styles.css">
+  <script src="/page/queryme/script.js" defer></script>
+  <title>QueryMe — CVPR 2026</title>
+  <link rel="canonical" href="https://weiyu0726.github.io/queryme/">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="wordmark" href="#home" aria-label="QueryMe home"><svg class="football-mark" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12"/><polygon points="14,8 19,12 17,18 11,18 9,12"/><path d="M14 8V2M19 12l6-2M17 18l4 6M11 18l-4 6M9 12l-6-2M9 3l5 2 5-2M26 14l-4 4 1 4M17 26l-3-4-3 4M5 22l1-5-4-3"/></svg>Query<span>Me</span></a>
+      <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">BibTeX <span aria-hidden="true">↗</span></a></nav>
+      <span class="header-venue">CVPR 2026</span>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero shell" id="home" aria-labelledby="title">
+      <p class="eyebrow"><span class="red-dot"></span> CVPR 2026 <span class="eyebrow-divider">/</span> Open-vocabulary 3D understanding</p>
+      <h1 id="title">Query<span>Me</span><span class="title-dot">.</span></h1>
+      <p class="paper-title">Query-Driven Open-Vocabulary 3D Object Affordances<br class="desktop-break"> Grounding from Multimodal Evidence</p>
+      <div class="authors"><a href="https://weiyu0726.github.io/" target="_blank" rel="noopener noreferrer">Weiyu Zhao<sup>1</sup></a><a href="https://liru0126.github.io/" target="_blank" rel="noopener noreferrer">Ru Li<sup>1</sup></a><span>Jiaqi Liu<sup>1</sup></span><a href="https://sizhezhao.github.io/" target="_blank" rel="noopener noreferrer">Sizhe Zhao<sup>1</sup></a><span>Qinglin Liu<sup>1</sup></span><span>Shengping Zhang<sup>1,2,†</sup></span></div>
+      <p class="affiliations"><span><sup>1</sup> Harbin Institute of Technology</span><span><sup>2</sup> Harbin Institute of Technology (Weihai) Qingdao Research Institute</span></p>
+      <p class="corresponding">† Corresponding author</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhao_QueryMe_Query-Driven_Open-Vocabulary_3D_Object_Affordances_Grounding_from_Multimodal_Evidence_CVPR_2026_paper.html" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v5h4M10 12h5m-5 4h5"/></svg>Read the paper <span aria-hidden="true">↗</span></a>
+        <button class="button github-coming-soon" type="button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.3-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.3-.4 6.7-1.6 6.7-7.3a5.7 5.7 0 0 0-1.5-3.9 5.3 5.3 0 0 0-.1-3.9s-1.2-.4-4.1 1.5a13.4 13.4 0 0 0-7 0C5.1 0 3.9.4 3.9.4a5.3 5.3 0 0 0-.1 3.9 5.7 5.7 0 0 0-1.5 3.9c0 5.7 3.4 6.9 6.7 7.3a3.4 3.4 0 0 0-1 2.6V22" transform="translate(1 1) scale(.92)"/></svg>GitHub <span class="coming-soon-label">Coming soon</span></button>
+        <a class="button" href="https://www.youtube.com/watch?v=HKZObJoWJ2M" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg>Watch video</a>
+        <a class="button" href="#citation"><span class="code-icon" aria-hidden="true">{ }</span> BibTeX</a>
+      </div>
+      <a class="scroll-cue" href="#overview">From watching a lift to understanding a grip <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="teaser-section shell" id="overview" aria-labelledby="overview-title">
+      <div class="teaser-topline"><p class="eyebrow">The QueryMe teaser</p><span>HUMAN INTERACTIONS → 3D UNDERSTANDING</span></div>
+      <figure class="football-teaser">
+        <button class="image-button" data-zoom="/page/queryme/assets/queryme-football-teaser.png" aria-label="Enlarge the QueryMe football teaser"><img src="/page/queryme/assets/queryme-football-teaser.png" width="1448" height="1086" fetchpriority="high" alt="Football-themed QueryMe illustration: a player lifts a handled trophy, robots observe its 3D interaction geometry, and reason about how to hold a differently shaped golden football trophy."><span class="zoom-hint" aria-hidden="true">↗</span></button>
+        <figcaption class="football-caption"><h2 id="overview-title">A new trophy.<br><em>A familiar way to lift it.</em></h2><p>Watching someone lift a trophy tells us more than what it looks like. It suggests where and how to hold it. The teaser illustrates QueryMe’s central idea: combine interaction, language, and geometry to reason about functional regions on unfamiliar objects.<br><span class="illustration-note">Concept illustration · Quantitative evaluations are shown below.</span></p></figcaption>
+      </figure>
+      <div class="evidence-strip"><div><span class="evidence-index">01</span><div><h3>Watch an interaction</h3><p>Learn from how people use an object</p></div></div><span class="flow-arrow" aria-hidden="true">→</span><div><span class="evidence-index">02</span><div><h3>Understand the geometry</h3><p>Query visual, linguistic &amp; 3D evidence</p></div></div><span class="flow-arrow" aria-hidden="true">→</span><div><span class="evidence-index">03</span><div><h3>Find where to interact</h3><p>Ground functional regions on a new object</p></div></div></div>
+    </section>
+
+    <section class="abstract-section shell" aria-labelledby="abstract-title"><div><p class="eyebrow">In a nutshell</p><h2 id="abstract-title">Understanding what<br>an object <em>affords.</em></h2></div><div class="abstract-copy"><p>Open-vocabulary 3D affordance grounding identifies the parts of an object that support an action. A central challenge is transferring interaction knowledge from 2D images to 3D objects, especially when their shapes or functions were not seen during training.</p><p><strong>QueryMe learns from multimodal evidence.</strong> It reconstructs a human–object interaction image in 3D, focuses on relevant spatial regions, and uses learnable queries to retrieve evidence from interaction, text, and object representations. The resulting point-wise predictions locate functional regions on the target object.</p><p class="abstract-takeaway">On PIADv2, QueryMe improves unseen-affordance AUC by <strong>4.19 points</strong> over GREAT.</p><details class="paper-motivation"><summary>View the original paper’s motivating example</summary><figure><button class="image-button" data-zoom="/page/queryme/assets/teaser-detail.png" aria-label="Enlarge the original paper concept figure"><img src="/page/queryme/assets/teaser-detail.png" width="985" height="555" loading="lazy" alt="The original QueryMe paper illustrates how different bag interactions correspond to different functional regions."><span class="zoom-hint" aria-hidden="true">↗</span></button><figcaption>Original paper · Figure 1</figcaption></figure></details></div></section>
+
+    <section class="method-section section-tint" id="method" aria-labelledby="method-title"><div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">02 / The method</p><h2 id="method-title">Three kinds of evidence.<br><em>One grounded prediction.</em></h2></div><p>Bridge the 2D-to-3D gap, align the modalities, and let queries find interaction-relevant geometry.</p></div>
+      <figure class="framework-figure"><button class="image-button" data-zoom="/page/queryme/assets/framework-detail.png" aria-label="Enlarge the QueryMe architecture"><img src="/page/queryme/assets/framework-detail.png" width="1540" height="715" loading="lazy" alt="QueryMe architecture: adaptive spatial attention on reconstructed human–object interaction points, text and object feature encoding, multimodal guided query learning, and an affordance decoder."><span class="zoom-hint" aria-hidden="true">↗</span></button><figcaption>QueryMe architecture · Original paper, Figure 2</figcaption></figure>
+      <div class="method-steps"><article><span class="step-number">01</span><h3>Lift interactions into 3D</h3><p>Reconstruct an HOI image with VGGT. Adaptive spatial attention concentrates on useful interaction geometry and suppresses irrelevant background evidence.</p><span class="step-tag">Adaptive spatial attention</span></article><article><span class="step-number">02</span><h3>Connect the modalities</h3><p>Encode interaction and geometric attributes alongside 3D HOI and object features. Cross-attention connects language with the spatial evidence.</p><span class="step-tag">Multimodal feature encoding</span></article><article><span class="step-number">03</span><h3>Query the functional regions</h3><p>Learnable queries collect evidence through attention. The affordance decoder combines query and object features to produce a point-wise affordance map.</p><span class="step-tag">Multimodal guided query learning</span></article></div>
+    </div></section>
+
+    <section class="results-section section-tint" id="results" aria-labelledby="results-title"><div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">03 / The evidence</p><h2 id="results-title">Generalization,<br><em>measured.</em></h2></div><p>Evaluated on PIADv2 across seen categories, unseen objects, and unseen affordances.</p></div>
+      <div class="metrics-strip"><div><strong>92.34</strong><span>Seen · AUC</span></div><div><strong>83.03</strong><span>Unseen object · AUC</span></div><div><strong>74.00</strong><span>Unseen affordance · AUC</span></div><div class="metric-gain"><strong>+4.19<span>pts</span></strong><span>Unseen affordance AUC vs. GREAT</span></div></div>
+      <div class="results-toolbar"><div class="segmented" role="group" aria-label="Evaluation split"><button data-split="seen" aria-pressed="false">Seen</button><button data-split="object" aria-pressed="false">Unseen object</button><button data-split="affordance" aria-pressed="true">Unseen affordance</button></div><span class="table-source">Original paper · Table 1</span></div>
+      <p class="split-description" id="split-description" aria-live="polite">Affordance categories held out during training; object categories may overlap.</p>
+      <div class="table-scroll" role="region" tabindex="0" aria-label="PIADv2 benchmark results"><table><caption id="results-caption">PIADv2 — Unseen affordance</caption><thead><tr><th scope="col">Method</th><th scope="col">AUC ↑</th><th scope="col">aIoU ↑</th><th scope="col">SIM ↑</th><th scope="col">MAE ↓</th></tr></thead><tbody id="results-body"><tr><th scope="row">FRCNN</th><td>59.08</td><td>7.96</td><td>0.210</td><td>0.156</td></tr><tr><th scope="row">XMF</th><td>60.99</td><td>8.11</td><td>0.225</td><td>0.152</td></tr><tr><th scope="row">IAG</th><td>62.29</td><td>8.99</td><td>0.251</td><td>0.141</td></tr><tr><th scope="row">LASO</th><td>64.07</td><td>8.37</td><td>0.228</td><td>0.140</td></tr><tr><th scope="row">GREAT</th><td>69.81</td><td>12.05</td><td>0.290</td><td>0.127</td></tr><tr class="ours"><th scope="row">QueryMe <span>Ours</span></th><td><strong>74.00</strong></td><td><strong>13.76</strong></td><td><strong>0.316</strong></td><td><strong>0.097</strong></td></tr></tbody></table></div>
+      <p class="table-note">Bold marks the best result for each metric. AUC and aIoU are reported on a 0–100 scale. ↑ Higher is better; ↓ lower is better.</p>
+      <div class="supporting-results"><article><h3>More precise functional regions</h3><p>Qualitative comparisons on microwave opening and bag lifting show the predicted regions alongside ground truth and GREAT.</p><figure><button class="image-button" data-zoom="/page/queryme/assets/comparison-detail.png" aria-label="Enlarge qualitative comparison"><img src="/page/queryme/assets/comparison-detail.png" width="730" height="365" loading="lazy" alt="Ground truth, QueryMe, and GREAT predictions for microwave opening and bag lifting."><span class="zoom-hint" aria-hidden="true">↗</span></button><figcaption>Original paper · Figure 4</figcaption></figure></article><article><h3>Resilience to noisy geometry</h3><p>QueryMe retains approximately 69 AUC when spatial perturbations affect 85% of target-object points in the paper's noise experiment.</p><figure><button class="image-button" data-zoom="/page/queryme/assets/noise-detail.png" aria-label="Enlarge the robustness plot"><img src="/page/queryme/assets/noise-detail.png" width="630" height="445" loading="lazy" alt="AUC versus point-cloud noise ratio. QueryMe degrades more slowly than GREAT and the variant without 3D HOI."><span class="zoom-hint" aria-hidden="true">↗</span></button><figcaption>Original paper · Figure 5</figcaption></figure></article></div>
+      <details class="limitations"><summary>Scope &amp; limitations <span aria-hidden="true">+</span></summary><p>These results concern object-level affordance grounding on PIADv2. Monocular reconstruction errors, occlusion, and background clutter remain challenges. Fine-grained unseen affordances can be difficult to localize. On the unseen-object split, GREAT has a lower MAE (0.109) than QueryMe (0.118), while QueryMe leads on AUC, aIoU, and SIM.</p></details>
+    </div></section>
+
+    <section class="citation-section shell" id="citation" aria-labelledby="citation-title"><div><p class="eyebrow">04 / Citation</p><h2 id="citation-title">Build on<br><em>this work.</em></h2><p>If QueryMe is useful for your research, please consider citing our paper.</p><a class="text-link" href="https://openaccess.thecvf.com/content/CVPR2026/html/Zhao_QueryMe_Query-Driven_Open-Vocabulary_3D_Object_Affordances_Grounding_from_Multimodal_Evidence_CVPR_2026_paper.html" target="_blank" rel="noopener noreferrer">CVF Open Access <span aria-hidden="true">↗</span></a></div><div class="citation-box"><div class="code-toolbar"><span>BIBTEX</span><button id="copy-citation" type="button">Copy citation <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@InProceedings{Zhao_2026_CVPR,
+  author    = {Zhao, Weiyu and Li, Ru and Liu, Jiaqi and
+               Zhao, Sizhe and Liu, Qinglin and Zhang, Shengping},
+  title     = {QueryMe: Query-Driven Open-Vocabulary 3D Object
+               Affordances Grounding from Multimodal Evidence},
+  booktitle = {Proceedings of the IEEE/CVF Conference on
+               Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2026},
+  pages     = {2603-2612}
+}</code></pre><p id="copy-status" role="status" aria-live="polite"></p></div></section>
+  </main>
+  <footer class="shell"><a class="wordmark" href="#home">Query<span>Me</span><span class="footer-dot">.</span></a><span>Human interactions. Multimodal evidence. 3D understanding.</span><a href="#home">Back to top ↑</a></footer>
+  <dialog id="image-dialog" aria-labelledby="dialog-label"><div class="dialog-toolbar"><p id="dialog-label">Figure detail</p><button id="close-dialog" aria-label="Close figure">Close <span aria-hidden="true">×</span></button></div><img id="dialog-image" alt=""></dialog>
+</body>
+</html>
