@@ -82,12 +82,99 @@
 .scroll-story .citation pre { border-radius: 4px; background: #f7f8f8; }
 .scroll-story footer { padding-block: 28px; }
 
+/* Give media one clear boundary and keep playback controls in normal flow. */
+.scroll-story .single-scene > .chapter-visual {
+  border: 1px solid #dce0e2;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+  padding: 14px 18px 0;
+}
+.scroll-story .ambient-film { cursor: default; touch-action: auto; }
+.scroll-story .ambient-controls {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 92px;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  padding: 4px 0;
+  border-top: 1px solid #eceeef;
+  background: #fff;
+}
+.ambient-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+.ambient-toggle:hover { background: #f2f4f4; }
+.ambient-toggle img { width: 20px; height: 20px; }
+.ambient-seek { width: 100%; min-width: 0; height: 24px; margin: 0; accent-color: #d87531; cursor: pointer; }
+.ambient-time { font-size: 12px; color: #626b71; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.ambient-chapter .evidence-footer { margin-top: 0; min-height: 38px; padding-block: 9px; }
+.scroll-story .ambient-controls.ambient-controls-minimal {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+}
+.ambient-controls-minimal .ambient-toggle { width: 32px; height: 32px; }
+.scroll-story .f2-inspection { margin-top: 0; padding-block: 12px; }
+.scroll-story .ambient-chapter .ambient-film { max-height: calc(100vh - 285px); }
+.scroll-story #finding-two .ambient-film { max-height: calc(100vh - 300px); }
+
+.task-showcase { padding-block: 28px 36px; scroll-margin-top: 80px; }
+.task-examples {
+  --task-gap: 24px;
+  position: relative;
+  display: flex;
+  gap: var(--task-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-x pan-y;
+}
+.task-examples::-webkit-scrollbar { display: none; }
+.task-examples:focus-visible { outline: 2px solid #d77432; outline-offset: 5px; }
+.task-examples.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.task-examples.has-auto-scroll { scroll-snap-type: none; }
+.task-example { flex: 0 0 calc((100% - var(--task-gap) - var(--task-gap)) / 2.5); min-width: 0; margin: 0; scroll-snap-align: start; }
+.task-video-slot { width: 100%; aspect-ratio: 16 / 9; background: #f3f4f5; border: 1px solid #e2e5e7; border-radius: 6px; overflow: hidden; }
+.task-video { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.task-example .task-instruction {
+  margin: 14px 0 0;
+  padding: 0 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #b95110;
+  text-align: center;
+  text-wrap: balance;
+}
+.scroll-story .story-prologue { max-width: var(--page-width); padding: 32px 0 30px; border-top: 1px solid #e5e8e9; }
+.scroll-story .story-prologue h2 { font-size: 24px; margin: 9px 0 8px; }
+.story-prologue > p { font-size: 14px; }
+
 @media (max-width: 800px) {
   .scroll-story { --page-gutter: 32px; }
   .scroll-story .sheet-heading h2 { font-size: 24px; }
   .scroll-story .story-prologue h2 { font-size: 26px; }
   .scroll-story .benchmark-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ambient-chapter .evidence-footer { align-items: start; flex-wrap: wrap; }
+  .task-examples { --task-gap: 16px; }
+  .scroll-story .single-scene > .chapter-visual { padding: 8px 10px 0; }
+  .scroll-story .ambient-chapter .ambient-film,
+  .scroll-story #finding-two .ambient-film { max-height: none; }
+  .scroll-story .ambient-controls { gap: 8px; grid-template-columns: 36px minmax(0,1fr) 82px; }
 }
 @media (max-width: 500px) {
   .scroll-story .benchmark-grid { grid-template-columns: 1fr; }

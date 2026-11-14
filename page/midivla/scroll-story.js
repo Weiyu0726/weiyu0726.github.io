@@ -122,26 +122,151 @@
 
   function createScenePlayback(options) {
     var inside = false;
-    function replay() {
-      options.reset();
+    var manuallyPaused = false;
+    function play() {
       return Promise.resolve(options.play()).catch(function () {});
+    }
+    function userPlay() {
+      if (options.explicitAllowed && !options.explicitAllowed()) return;
+      manuallyPaused = false;
+      if (options.beforePlay) options.beforePlay();
+      return play();
+    }
+    function userPause() {
+      manuallyPaused = true;
+      options.pause();
+    }
+    function refresh() {
+      if (inside && !manuallyPaused && options.allowed()) return play();
+      options.pause();
     }
     return {
       enter: function () {
         if (inside) return;
         inside = true;
-        if (options.allowed()) replay();
+        if (!manuallyPaused && options.allowed()) play();
       },
       leave: function () { inside = false; options.pause(); },
-      replay: replay,
-      pause: function () { options.pause(); }
+      replay: function () { options.reset(); return userPlay(); },
+      pause: function () { options.pause(); },
+      refresh: refresh,
+      userPlay: userPlay,
+      userPause: userPause,
+      seek: function (time) {
+        var duration = options.duration();
+        if (!Number.isFinite(time) || !Number.isFinite(duration) || duration <= 0) return;
+        userPause();
+        if (options.beforeSeek) options.beforeSeek();
+        options.seek(Math.max(0, Math.min(Math.max(0, duration - 1 / 30), time)));
+      }
     };
+  }
+
+  function createSceneControls(document, video, playback) {
+    var minimal = video.getAttribute('data-video-controls') === 'minimal';
+    var controls = document.createElement('div');
+    controls.className = minimal ? 'ambient-controls ambient-controls-minimal' : 'ambient-controls';
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('aria-label', minimal ? 'Animation controls' : 'Video controls');
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'ambient-toggle';
+    toggle.setAttribute('aria-controls', video.id);
+    var icon = document.createElement('img');
+    icon.alt = '';
+    icon.width = 18;
+    icon.height = 18;
+    toggle.append(icon);
+    var seek, clock;
+    if (!minimal) {
+      seek = document.createElement('input');
+      seek.type = 'range';
+      seek.className = 'ambient-seek';
+      seek.min = 0;
+      seek.step = 0.1;
+      seek.setAttribute('aria-controls', video.id);
+      seek.setAttribute('aria-label', 'Playback position: ' + (video.getAttribute('aria-label') || 'Video'));
+      clock = document.createElement('span');
+      clock.className = 'ambient-time';
+    }
+    function formatTime(seconds) {
+      seconds = Math.max(0, Math.floor(Number(seconds) || 0));
+      return Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
+    }
+    function sync() {
+      var duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 0;
+      var current = Number.isFinite(video.currentTime) ? video.currentTime : 0;
+      var label = minimal ? (video.paused ? 'Resume animation' : 'Pause animation') :
+        (video.paused ? 'Play video' : 'Pause video');
+      toggle.title = label;
+      toggle.setAttribute('aria-label', label);
+      icon.src = '/page/midivla/assets/icons/' + (video.paused ? 'play' : 'pause') + '.svg';
+      if (minimal) return;
+      seek.disabled = !duration;
+      seek.max = duration || 1;
+      seek.value = Math.min(current, duration);
+      seek.setAttribute('aria-valuetext', formatTime(current) + ' of ' + formatTime(duration));
+      seek.style.setProperty('--seek-progress', (duration ? current / duration * 100 : 0) + '%');
+      clock.textContent = formatTime(current) + ' / ' + formatTime(duration);
+    }
+    toggle.addEventListener('click', function () {
+      if (video.paused) playback.userPlay();
+      else playback.userPause();
+    });
+    if (seek) seek.addEventListener('input', function () { playback.seek(Number(seek.value)); });
+    ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked', 'play', 'pause', 'ended', 'emptied'].forEach(function (event) {
+      video.addEventListener(event, sync);
+    });
+    controls.append(toggle);
+    if (!minimal) controls.append(seek, clock);
+    sync();
+    var links = minimal && video.parentElement.querySelector('.pipeline-links');
+    if (links) links.append(controls);
+    else video.insertAdjacentElement('afterend', controls);
+    // Long pipelines retain native controls until the custom toolbar mounts.
+    video.controls = false;
+    video.classList.add('has-ambient-controls');
+    return controls;
   }
 
   var scenePlaybackRate = 1.35;
 
+  function createDiagramMotionControl(document, diagram, footer, options) {
+    var paused = true;
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'icon-button diagram-motion-toggle';
+    toggle.setAttribute('aria-controls', diagram.id);
+    var icon = document.createElement('img');
+    icon.alt = '';
+    icon.width = 16;
+    icon.height = 16;
+    toggle.append(icon);
+    function setPaused(value) {
+      paused = value;
+      diagram.classList.toggle('is-motion-paused', value);
+      var label = value ? 'Resume animation' : 'Pause animation';
+      toggle.title = label;
+      toggle.setAttribute('aria-label', label);
+      icon.src = '/page/midivla/assets/icons/' + (value ? 'play' : 'pause') + '.svg';
+    }
+    var playback = createScenePlayback({
+      play: function () { setPaused(false); },
+      pause: function () { setPaused(true); },
+      allowed: options.allowed,
+      explicitAllowed: options.explicitAllowed
+    });
+    toggle.addEventListener('click', function () {
+      if (paused) playback.userPlay();
+      else playback.userPause();
+    });
+    setPaused(true);
+    footer.append(toggle);
+    return playback;
+  }
+
   function scenePlaybackRateFor(id) {
-    return id === 'temporal-film' || id === 'vla-training-film' ? 1 : scenePlaybackRate;
+    return ['representation-film', 'finding-one-film', 'finding-two-film'].includes(id) ? scenePlaybackRate : 1;
   }
 
   function findingTwoNoiseTime(percent) {
@@ -278,6 +403,200 @@
     context.restore();
   }
 
+  function taskCarouselDestination(index, offsets, maximum) {
+    if (!offsets.length) return 0;
+    var bounded = Math.max(0, Math.min(offsets.length - 1, index));
+    return Math.max(0, Math.min(maximum, offsets[bounded]));
+  }
+
+  function taskCarouselIndex(scrollLeft, offsets, maximum) {
+    if (offsets.length < 2 || maximum <= 0) return 0;
+    if (scrollLeft >= maximum - 2) return offsets.length - 1;
+    return offsets.reduce(function (nearest, offset, index) {
+      return Math.abs(offset - scrollLeft) < Math.abs(offsets[nearest] - scrollLeft) ? index : nearest;
+    }, 0);
+  }
+
+  function createTaskAutoScroll(options) {
+    var frame = null;
+    var previous = null;
+    var direction = 1;
+    var active = false;
+    var position = 0;
+    function tick(time) {
+      frame = null;
+      if (!active) return;
+      if (previous === null) position = options.readPosition();
+      else {
+        var maximum = options.maximum();
+        var next = position + direction * 28 * Math.min(64, Math.max(0, time - previous)) / 1000;
+        if (next >= maximum) { next = maximum; direction = -1; }
+        else if (next <= 0) { next = 0; direction = 1; }
+        position = next;
+        options.writePosition(next);
+      }
+      previous = time;
+      frame = options.requestFrame(tick);
+    }
+    return {
+      setActive: function (value) {
+        if (active === value) return;
+        active = value;
+        previous = null;
+        if (frame !== null) options.cancelFrame(frame);
+        frame = active ? options.requestFrame(tick) : null;
+      }
+    };
+  }
+
+  function mountTaskVideos(document, window, media) {
+    var players = new Map();
+    Array.from(document.querySelectorAll('#task-carousel video')).forEach(function (video) {
+      video.muted = true;
+      video.loop = true;
+      var playback = createScenePlayback({
+        play: function () { return video.play(); },
+        pause: function () { video.pause(); },
+        allowed: function () { return !document.hidden && !media.matches; }
+      });
+      players.set(video, playback);
+    });
+    if (!players.size) return;
+    if (window.IntersectionObserver) {
+      var observer = new window.IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var playback = players.get(entry.target);
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.15) playback.enter();
+          else playback.leave();
+        });
+      }, {threshold: [0, 0.15]});
+      players.forEach(function (_, video) { observer.observe(video); });
+    } else players.forEach(function (playback) { playback.enter(); });
+    function refresh() { players.forEach(function (playback) { playback.refresh(); }); }
+    document.addEventListener('visibilitychange', refresh);
+    media.addEventListener('change', refresh);
+  }
+
+  function mountTaskCarousel(document, window, media) {
+    var track = document.querySelector('#task-carousel');
+    if (!track) return;
+    var items = Array.from(track.querySelectorAll('.task-example'));
+    var requestedIndex = null;
+    var drag = null;
+    var scrollFrame = null;
+    function geometry() {
+      return {
+        offsets: items.map(function (item) { return item.offsetLeft - items[0].offsetLeft; }),
+        maximum: Math.max(0, track.scrollWidth - track.clientWidth)
+      };
+    }
+    function index() {
+      var layout = geometry();
+      return taskCarouselIndex(track.scrollLeft, layout.offsets, layout.maximum);
+    }
+    function update() {
+      scrollFrame = null;
+      var layout = geometry();
+      if (requestedIndex !== null && Math.abs(track.scrollLeft - taskCarouselDestination(requestedIndex, layout.offsets, layout.maximum)) < 2) requestedIndex = null;
+    }
+    function goTo(next) {
+      var layout = geometry();
+      requestedIndex = Math.max(0, Math.min(items.length - 1, next));
+      track.scrollTo({left: taskCarouselDestination(requestedIndex, layout.offsets, layout.maximum), behavior: media.matches ? 'auto' : 'smooth'});
+      update();
+    }
+    track.addEventListener('keydown', function (event) {
+      if (event.target !== track || event.altKey || event.ctrlKey || event.metaKey) return;
+      var current = requestedIndex === null ? index() : requestedIndex;
+      var next = {ArrowLeft: current - 1, ArrowRight: current + 1, Home: 0, End: items.length - 1}[event.key];
+      if (next === undefined) return;
+      event.preventDefault();
+      goTo(next);
+    });
+    track.addEventListener('scroll', function () {
+      if (scrollFrame === null) scrollFrame = window.requestAnimationFrame(update);
+    }, {passive: true});
+    track.addEventListener('wheel', function () { requestedIndex = null; }, {passive: true});
+    track.addEventListener('pointerdown', function (event) {
+      requestedIndex = null;
+      if (event.pointerType !== 'mouse' || event.button !== 0 || event.target.closest('button, a, video')) return;
+      drag = {id: event.pointerId, x: event.clientX, y: event.clientY, left: track.scrollLeft, active: false};
+    });
+    track.addEventListener('pointermove', function (event) {
+      if (!drag || drag.id !== event.pointerId) return;
+      var dx = event.clientX - drag.x;
+      if (!drag.active) {
+        if (Math.abs(event.clientY - drag.y) > Math.abs(dx) + 6) { drag = null; return; }
+        if (Math.abs(dx) < 6) return;
+        drag.active = true;
+        track.setPointerCapture(event.pointerId);
+        track.classList.add('is-dragging');
+      }
+      event.preventDefault();
+      track.scrollLeft = drag.left - dx;
+    });
+    function endDrag(event) {
+      if (!drag || drag.id !== event.pointerId) return;
+      var active = drag.active;
+      var next = index();
+      drag = null;
+      track.classList.remove('is-dragging');
+      if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+      if (active) goTo(next);
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('lostpointercapture', endDrag);
+    track.addEventListener('pointerleave', function () { if (drag && !drag.active) drag = null; });
+    window.addEventListener('resize', function () { requestedIndex = null; update(); });
+    if (window.IntersectionObserver) {
+      var visible = false;
+      var hovered = track.matches(':hover');
+      var focused = track.matches(':focus-visible');
+      var interacting = false;
+      var resumeTimer = null;
+      var autoScroll = createTaskAutoScroll({
+        requestFrame: function (callback) { return window.requestAnimationFrame(callback); },
+        cancelFrame: function (id) { window.cancelAnimationFrame(id); },
+        readPosition: function () { return track.scrollLeft; },
+        writePosition: function (left) { track.scrollLeft = left; },
+        maximum: function () { return Math.max(0, track.scrollWidth - track.clientWidth); }
+      });
+      function refreshAutoScroll() {
+        track.classList.toggle('has-auto-scroll', !media.matches);
+        autoScroll.setActive(visible && !document.hidden && !media.matches && !hovered && !focused && !interacting);
+      }
+      function pauseInteraction() {
+        window.clearTimeout(resumeTimer);
+        interacting = true;
+        refreshAutoScroll();
+      }
+      function resumeAfterInteraction() {
+        window.clearTimeout(resumeTimer);
+        resumeTimer = window.setTimeout(function () { interacting = false; refreshAutoScroll(); }, 1800);
+      }
+      track.addEventListener('pointerenter', function (event) { if (event.pointerType === 'mouse') { hovered = true; refreshAutoScroll(); } });
+      track.addEventListener('pointerleave', function () { hovered = false; refreshAutoScroll(); });
+      track.addEventListener('focusin', function (event) { focused = track.matches(':focus-visible') || event.target !== track; refreshAutoScroll(); });
+      track.addEventListener('focusout', function (event) { focused = track.contains(event.relatedTarget); refreshAutoScroll(); });
+      track.addEventListener('keydown', function () { focused = true; refreshAutoScroll(); });
+      track.addEventListener('pointerdown', pauseInteraction);
+      track.addEventListener('pointerup', resumeAfterInteraction);
+      track.addEventListener('pointercancel', resumeAfterInteraction);
+      track.addEventListener('lostpointercapture', resumeAfterInteraction);
+      window.addEventListener('pointerup', function () { if (interacting) resumeAfterInteraction(); });
+      track.addEventListener('wheel', function () { pauseInteraction(); resumeAfterInteraction(); }, {passive: true});
+      document.addEventListener('visibilitychange', refreshAutoScroll);
+      media.addEventListener('change', refreshAutoScroll);
+      new window.IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        refreshAutoScroll();
+      }, {threshold: 0.15}).observe(track);
+      refreshAutoScroll();
+    }
+    update();
+  }
+
   function mount(document, window) {
     if (!document || !document.querySelector('.scroll-story')) return;
     var $ = function (selector, container) { return (container || document).querySelector(selector); };
@@ -288,6 +607,9 @@
     var media = window.matchMedia('(prefers-reduced-motion: reduce)');
     var playbacks = [];
     var sceneSelections = new Map();
+
+    mountTaskCarousel(document, window, media);
+    mountTaskVideos(document, window, media);
 
     if (window.IntersectionObserver) {
       var emblemObserver = new window.IntersectionObserver(function (entries) {
@@ -398,9 +720,11 @@
     $$('[data-ambient-scene]').forEach(function (video) {
       video.defaultPlaybackRate = scenePlaybackRateFor(video.id);
       video.playbackRate = scenePlaybackRateFor(video.id);
+      video.loop = true;
       video.draggable = false;
-      video.title = 'Drag to explore the diagram';
-      video.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight Home End Space Enter');
+      video.tabIndex = -1;
+      video.removeAttribute('title');
+      video.removeAttribute('aria-keyshortcuts');
       var inspection = null;
       if (video.id === 'finding-two-film') {
         var noiseInput = $('#f2-scene-noise');
@@ -414,61 +738,39 @@
             $('#f2-scene-noise-value').textContent = percent + '%';
           }
         });
-        noiseInput.addEventListener('input', function () { inspection.select(noiseInput.value); });
+        noiseInput.addEventListener('input', function () {
+          playback.userPause();
+          inspection.select(noiseInput.value);
+        });
         video.addEventListener('loadedmetadata', inspection.loaded);
         video.addEventListener('timeupdate', function () { inspection.observe(video.currentTime); });
         video.addEventListener('seeked', function () { inspection.observe(video.currentTime); });
       }
-      var drag = createSceneDrag({
-        duration: function () { return video.duration; },
-        time: function () { return video.currentTime; },
-        pause: function () { video.pause(); },
-        seek: function (time) { video.currentTime = time; },
-        change: function (active) { video.classList.toggle('is-dragging', active); }
-      });
       var playback = createScenePlayback({
         play: function () { return video.play(); },
-        pause: function () { drag.end(); video.pause(); },
-        reset: function () { drag.end(); if (inspection) inspection.clear(); video.currentTime = 0; },
-        allowed: function () { return !media.matches && !document.hidden && !$('dialog[open]') && !(inspection && inspection.isManual()); }
+        pause: function () { video.pause(); },
+        reset: function () { video.currentTime = 0; },
+        duration: function () { return video.duration; },
+        seek: function (time) { video.currentTime = time; },
+        beforePlay: function () { if (inspection) inspection.clear(); },
+        beforeSeek: function () { if (inspection) inspection.clear(); },
+        allowed: function () { return !media.matches && !document.hidden && !$('dialog[open]') && !(inspection && inspection.isManual()); },
+        explicitAllowed: function () { return !document.hidden && !$('dialog[open]'); }
       });
       ambientScenes.set(video, playback);
-      video.addEventListener('pointerdown', function (event) {
-        if (!event.isPrimary || event.button !== 0) return;
-        if (drag.start(event.clientX, event.clientY, video.getBoundingClientRect().width)) {
-          video.setPointerCapture(event.pointerId);
-          video.classList.add('is-pointer-focused');
-          video.focus({preventScroll: true});
-        }
-      });
-      video.addEventListener('pointermove', function (event) {
-        if (event.isPrimary && drag.move(event.clientX, event.clientY)) {
-          if (inspection) { inspection.clear(); inspection.observe(video.currentTime); }
-          event.preventDefault();
-        }
-      });
-      video.addEventListener('pointerup', function (event) {
-        drag.end();
-        if (video.hasPointerCapture(event.pointerId)) video.releasePointerCapture(event.pointerId);
-      });
-      video.addEventListener('pointercancel', drag.end);
-      video.addEventListener('lostpointercapture', drag.end);
-      video.addEventListener('keydown', function (event) {
-        video.classList.remove('is-pointer-focused');
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'Home' || event.key === 'End') {
-          event.preventDefault();
-          drag.end();
-          if (inspection) inspection.clear();
-          drag.step(event.key === 'Home' ? -video.duration : event.key === 'End' ? video.duration : event.key === 'ArrowLeft' ? -1 : 1);
-          return;
-        }
-        if (event.key === ' ' || event.key === 'Enter') {
-          event.preventDefault();
-          if (inspection) inspection.clear();
-          if (video.paused) video.play().catch(function () {});
-          else video.pause();
-        }
-      });
+      createSceneControls(document, video, playback);
+    });
+    $$('.representation-live').forEach(function (diagram) {
+      var diagramAllowed = function () {
+        return !media.matches && !document.hidden && !$('dialog[open]');
+      };
+      var playback = createDiagramMotionControl(document, diagram,
+        $('.evidence-footer', diagram.parentElement), {
+          allowed: diagramAllowed,
+          explicitAllowed: diagramAllowed
+        });
+      ambientScenes.set(diagram, playback);
+      if (!window.IntersectionObserver) playback.enter();
     });
     if (window.IntersectionObserver) {
       var sceneObserver = new window.IntersectionObserver(function (entries) {
@@ -491,7 +793,10 @@
       button.addEventListener('click', function () { button.closest('dialog').close(); });
     });
     $$('.evidence-dialog').forEach(function (dialog) {
-      dialog.addEventListener('close', function () { playbacks.forEach(function (playback) { playback.stop(); }); });
+      dialog.addEventListener('close', function () {
+        playbacks.forEach(function (playback) { playback.stop(); });
+        ambientScenes.forEach(function (playback) { playback.refresh(); });
+      });
       dialog.addEventListener('click', function (event) {
         var rect = dialog.getBoundingClientRect();
         if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
@@ -621,7 +926,6 @@
     $$('video').forEach(function (video) {
       video.addEventListener('play', function () {
         playbacks.forEach(function (playback) { playback.stop(); });
-        $$('video').forEach(function (other) { if (other !== video) other.pause(); });
       });
     });
     function loadImage(src) {
@@ -735,8 +1039,11 @@
       if (document.hidden) {
         stopTitle();
         playbacks.forEach(function (playback) { playback.stop(); });
+        ambientScenes.forEach(function (playback) { playback.pause(); });
         $$('video').forEach(function (video) { video.pause(); });
         $$('.is-animating').forEach(function (diagram) { diagram.classList.remove('is-animating'); });
+      } else {
+        ambientScenes.forEach(function (playback) { playback.refresh(); });
       }
     });
     media.addEventListener('change', function (event) {
@@ -744,6 +1051,8 @@
         stopTitle();
         playbacks.forEach(function (playback) { playback.stop(); });
         ambientScenes.forEach(function (playback) { playback.pause(); });
+      } else {
+        ambientScenes.forEach(function (playback) { playback.refresh(); });
       }
     });
 
@@ -811,7 +1120,10 @@
       });
     });
     $('#close-figure').addEventListener('click', function () { dialog.close(); });
-    dialog.addEventListener('close', function () { document.body.classList.remove('modal-open'); });
+    dialog.addEventListener('close', function () {
+      document.body.classList.remove('modal-open');
+      ambientScenes.forEach(function (playback) { playback.refresh(); });
+    });
     dialog.addEventListener('click', function (event) {
       var box = dialog.getBoundingClientRect();
       if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
@@ -868,6 +1180,11 @@
   }
 
   return Object.freeze({
+    mountTaskVideos: mountTaskVideos,
+    createTaskAutoScroll: createTaskAutoScroll,
+    taskCarouselDestination: taskCarouselDestination,
+    taskCarouselIndex: taskCarouselIndex,
+    mountTaskCarousel: mountTaskCarousel,
     findingTwoNoiseTime: findingTwoNoiseTime,
     findingTwoNoiseAt: findingTwoNoiseAt,
     createNoiseInspection: createNoiseInspection,
@@ -875,6 +1192,8 @@
     scenePlaybackRate: scenePlaybackRate,
     scenePlaybackRateFor: scenePlaybackRateFor,
     createScenePlayback: createScenePlayback,
+    createSceneControls: createSceneControls,
+    createDiagramMotionControl: createDiagramMotionControl,
     createTitleTokens: createTitleTokens,
     titleAnimationState: titleAnimationState,
     createFrameTransaction: createFrameTransaction,

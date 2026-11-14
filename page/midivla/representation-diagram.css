@@ -1,0 +1,120 @@
+.representation-live {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0;
+}
+.scroll-story #lapa .single-scene > .chapter-visual { padding: 0; border: 0; background: transparent; overflow: visible; }
+.representation-model { display: block; width: 100%; aspect-ratio: 1980 / 420; border: 1px solid #dce0e2; border-radius: 6px; background: #fff; }
+.representation-model[data-model="multi"] { border-color: #e2c5ae; }
+.representation-live .rd-flow,
+.representation-live .rd-context,
+.representation-live .rd-codebook-link { stroke-linecap: round; stroke-linejoin: round; }
+.representation-live .rd-flow { fill: none; stroke: #9ba9b1; stroke-width: 2.4; }
+.representation-live .rd-context { fill: none; stroke: #78939f; stroke-width: 2.2; stroke-dasharray: 6 7; }
+.representation-live .rd-codebook-link { fill: none; stroke: #c0c9ce; stroke-width: 2; }
+.representation-live .rd-blocks { fill: #f8fafb; stroke: #c7d0d5; stroke-width: 2; }
+.representation-live .rd-text { fill: #30383e; text-anchor: middle; }
+.representation-live .rd-row-title { font-size: 35px; font-weight: 700; text-anchor: start; }
+.representation-live .rd-model-note { font-size: 23px; fill: #7a858d; text-anchor: end; }
+.representation-live .rd-image-label,
+.representation-live .rd-block-label { font-size: 29px; font-weight: 600; }
+.representation-live .rd-grid-label { font-size: 26px; font-weight: 600; }
+.representation-live .rd-small { fill: #819099; font-size: 19px; }
+.representation-live .rd-note { fill: #819099; font-size: 24px; }
+.representation-live .rd-context-label { fill: #688794; font-size: 23px; }
+.representation-live .rd-s1 { fill: #df742c; }
+.representation-live .rd-s2 { fill: #58a0bb; }
+.representation-live .rd-s3 { fill: #62a883; }
+.representation-live .rd-neutral { fill: #657078; }
+.representation-live .rd-token {
+  opacity: .78;
+  animation: rd-token-emphasis 8s ease-in-out infinite;
+  animation-delay: calc(var(--rd-phase, 0s) + var(--rd-token-delay, 0s));
+}
+.representation-live .rd-packet {
+  fill: #819099;
+  offset-distance: 0%;
+  offset-rotate: 0deg;
+  offset-anchor: 0 0;
+  transform-box: view-box;
+  animation: rd-flow 4.8s linear infinite;
+}
+.representation-live .rd-packet.rd-s1 { fill: #df742c; }
+.representation-live .rd-packet.rd-s2 { fill: #58a0bb; }
+.representation-live .rd-packet.rd-s3 { fill: #62a883; }
+.representation-live .rd-input-single {
+  offset-path: path("M244 265 H249 Q263 265 263 279 V354 Q263 370 279 370 H474 Q490 370 490 354 V266 Q490 250 506 250 H508");
+  animation-delay: -1.2s;
+}
+.representation-live .rd-input-multi {
+  offset-path: path("M244 265 H249 Q263 265 263 279 V354 Q263 370 279 370 H474 Q490 370 490 354 V266 Q490 250 506 250 H508");
+  animation-delay: -3.4s;
+}
+.representation-live .rd-encode-single {
+  offset-path: path("M670 220 H928");
+  animation-delay: -2.2s;
+}
+.representation-live .rd-decode-single {
+  offset-path: path("M1142 220 H1503");
+  animation-delay: -3.6s;
+}
+.representation-live .rd-encode-multi {
+  offset-path: path("M670 220 H742");
+  animation-duration: 3.2s;
+  animation-delay: -.4s;
+}
+.representation-live .rd-residual-one {
+  offset-path: path("M926 220 H988");
+  animation-duration: 3.2s;
+  animation-delay: -1.4s;
+}
+.representation-live .rd-residual-two {
+  offset-path: path("M1172 220 H1234");
+  animation-duration: 3.2s;
+  animation-delay: -2.4s;
+}
+.representation-live .rd-decode-multi {
+  offset-path: path("M1418 220 H1503");
+  animation-duration: 3.2s;
+  animation-delay: -3s;
+}
+.representation-live .rd-output-single {
+  offset-path: path("M1665 220 H1726");
+  animation-delay: -4.5s;
+}
+.representation-live .rd-output-multi {
+  offset-path: path("M1665 220 H1726");
+  animation-delay: -2s;
+}
+.representation-live .rd-before-single {
+  fill: #688794;
+  offset-path: path("M244 220 H249 Q263 220 263 206 V116 Q263 100 279 100 H1574 Q1590 100 1590 116 V158");
+  animation-duration: 8s;
+  animation-delay: -3s;
+}
+.representation-live .rd-before-multi {
+  fill: #688794;
+  offset-path: path("M244 220 H249 Q263 220 263 206 V116 Q263 100 279 100 H1574 Q1590 100 1590 116 V158");
+  animation-duration: 8s;
+  animation-delay: -7s;
+}
+.representation-live.is-motion-paused * { animation-play-state: paused !important; }
+.diagram-motion-toggle { flex: 0 0 32px; width: 32px; height: 32px; padding: 7px; margin-left: auto; }
+.diagram-motion-toggle img { width: 18px; height: 18px; }
+@keyframes rd-flow {
+  0% { offset-distance: 0%; opacity: 0; }
+  8%, 90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes rd-token-emphasis {
+  0%, 72%, 100% { opacity: .78; }
+  18%, 34% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .representation-live * { animation: none !important; }
+  .representation-live .rd-packet { display: none; }
+  .representation-live .rd-token { opacity: .9; }
+  #lapa .diagram-motion-toggle { display: none; }
+}

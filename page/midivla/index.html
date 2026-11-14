@@ -9,18 +9,19 @@
   <link rel="stylesheet" href="/page/midivla/styles.css?v=findings-reader-1">
   <link rel="stylesheet" href="/page/midivla/scroll-story.css?v=20261011">
   <link rel="stylesheet" href="/page/midivla/discovery.css?v=20261011-vla-training">
-  <link rel="stylesheet" href="/page/midivla/clean-layout.css?v=20261011-clean-1">
+  <link rel="stylesheet" href="/page/midivla/clean-layout.css?v=20261114-task-instructions">
+  <link rel="stylesheet" href="/page/midivla/representation-diagram.css?v=20261114-refined-arrows">
   <script src="/page/midivla/assets/noise-experiments.js?v=20260925-layer1-35000" defer></script>
   <script src="/page/midivla/journey-data.js?v=20261011-confirmed-stages" defer></script>
   <script src="/page/midivla/storyboard-data.js?v=20261009" defer></script>
-  <script src="/page/midivla/scroll-story.js?v=20261011-vla-training" defer></script>
+  <script src="/page/midivla/scroll-story.js?v=20261114-robot-video" defer></script>
 <link rel="canonical" href="https://weiyu0726.github.io/midivla/">
 </head>
 <body class="scroll-story">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="header"><div class="nav-wrap">
   <a class="wordmark" href="#overview" aria-label="MiDiVLA home">MiDi<span>VLA</span></a>
-  <nav aria-label="Main navigation"><a href="#lapa">The story</a><a href="#finding-one">Findings</a><a href="#temporal-composition">Method</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
+  <nav aria-label="Main navigation"><a href="#demos">Robot tasks</a><a href="#lapa">Method</a><a href="#finding-one">Findings</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
 </div></header>
 <main id="main">
 <section class="story-overview wrap" id="overview">
@@ -30,22 +31,198 @@
     <p class="affiliations"><span><sup>1</sup> Harbin Institute of Technology</span><span><sup>2</sup> Nanyang Technological University</span><span><sup>3</sup> Harbin Institute of Technology, Shenzhen</span><span><sup>4</sup> Shandong University</span><span><sup>5</sup> Raytron Technology Co., Ltd.</span><span><sup>6</sup> Tsinghua University</span></p>
   </div>
   <div class="project-resources" aria-label="Project resources, coming soon"><span class="resource-unavailable" role="link" aria-disabled="true" title="Coming soon"><img class="icon" src="/page/midivla/assets/icons/file-text.svg" width="18" height="18" alt="">arXiv</span><span class="resource-unavailable" role="link" aria-disabled="true" title="Coming soon"><img class="icon" src="/page/midivla/assets/icons/code-xml.svg" width="18" height="18" alt="">GitHub</span><span class="resource-unavailable" role="link" aria-disabled="true" title="Coming soon"><img class="icon" src="/page/midivla/assets/icons/database.svg" width="18" height="18" alt="">Hugging Face</span></div>
-  <figure class="original-teaser"><button type="button" data-figure="teaser" data-title="MiDiVLA - Original teaser" aria-label="Enlarge the original MiDiVLA teaser"><img src="/page/midivla/assets/figure-teaser.webp" width="1658" height="919" alt="Original MiDiVLA teaser showing video frame pairs, single-scale and multi-scale latent quantization, and quantitative comparisons"></button><figcaption><span>From video transitions to decoupled latent actions.</span><button class="icon-button" type="button" data-figure="teaser" data-title="MiDiVLA - Original teaser" title="Enlarge original teaser" aria-label="Enlarge original teaser"><img class="icon" src="/page/midivla/assets/icons/maximize-2.svg" width="18" height="18" alt=""></button></figcaption></figure>
+  <figure class="original-teaser"><button type="button" data-figure="teaser" data-title="MiDiVLA - Original teaser" aria-label="Enlarge the original MiDiVLA teaser"><img src="/page/midivla/assets/figure-teaser.webp" width="1658" height="919" alt="Original MiDiVLA teaser showing video frame pairs, single-scale and multi-scale latent quantization, and quantitative comparisons"></button></figure>
+</section>
+<section class="task-showcase wrap" id="demos" aria-label="Real-world task videos">
+  <div id="task-carousel" class="task-examples" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Real-world task videos">
+    <figure class="task-example" role="group" aria-roledescription="slide" aria-label="1 of 5"><div class="task-video-slot"><video class="task-video" loop muted playsinline preload="metadata" poster="/page/midivla/assets/robot-task-01-poster.jpg" aria-label="Robot stacking a blue bowl inside a white bowl"><source src="/page/midivla/videos/robot-task-01.mp4" type="video/mp4"></video></div><figcaption class="task-instruction">Stack the bowls.</figcaption></figure>
+    <figure class="task-example" role="group" aria-roledescription="slide" aria-label="2 of 5"><div class="task-video-slot"><video class="task-video" loop muted playsinline preload="metadata" poster="/page/midivla/assets/robot-task-02-poster.jpg" aria-label="Robot placing a carrot on a plate"><source src="/page/midivla/videos/robot-task-02.mp4" type="video/mp4"></video></div><figcaption class="task-instruction">Place the carrot on the plate.</figcaption></figure>
+    <figure class="task-example" role="group" aria-roledescription="slide" aria-label="3 of 5"><div class="task-video-slot"><video class="task-video" loop muted playsinline preload="metadata" poster="/page/midivla/assets/robot-task-03-poster.jpg" aria-label="Robot picking up a test tube from a rack"><source src="/page/midivla/videos/robot-task-03.mp4" type="video/mp4"></video></div><figcaption class="task-instruction">Pick up the test tube.</figcaption></figure>
+    <figure class="task-example" role="group" aria-roledescription="slide" aria-label="4 of 5"><div class="task-video-slot"><video class="task-video" loop muted playsinline preload="metadata" poster="/page/midivla/assets/robot-task-04-poster.jpg" aria-label="Robot placing a banana in a basket"><source src="/page/midivla/videos/robot-task-04.mp4" type="video/mp4"></video></div><figcaption class="task-instruction">Place the banana in the basket.</figcaption></figure>
+    <figure class="task-example" role="group" aria-roledescription="slide" aria-label="5 of 5"><div class="task-video-slot"><video class="task-video" loop muted playsinline preload="metadata" poster="/page/midivla/assets/robot-task-05-poster.jpg" aria-label="Robot placing a cucumber in a basket"><source src="/page/midivla/videos/robot-task-05.mp4" type="video/mp4"></video></div><figcaption class="task-instruction">Place the cucumber in the basket.</figcaption></figure>
+  </div>
 </section>
 <section class="story-prologue wrap" aria-labelledby="story-question">
-  <span class="section-kicker">THE DISCOVERY</span>
-  <h2 id="story-question">Reconstructing a video is not the same<br>as <span>understanding its action.</span></h2>
-  <p>MiDiVLA starts with this gap. Two controlled experiments turn a multi-scale representation into a design for action supervision.</p>
-  <div class="story-acts"><a href="#finding-one"><b>01 / FINDING 1</b><strong>More scales are not enough.</strong><span>Action still affects several scales.</span></a><a href="#finding-two"><b>02 / FINDING 2</b><strong>Constraint location matters.</strong><span>Later scales leave earlier routes.</span></a><a href="#bottleneck"><b>03 / THE DESIGN</b><strong>Start at the first scale.</strong><span>Use its nine tokens to teach a VLA.</span></a></div>
+  <span class="section-kicker">THE METHOD</span>
+  <h2 id="story-question">From video to robot actions.</h2>
+  <p>Two findings shape the action tokens used to train MiDiVLA.</p>
 </section>
 <div class="story-body" id="findings">
 <section class="story-chapter evidence-chapter ambient-chapter" id="lapa" data-chapter="lapa">
   <div class="wrap"><span id="multiscale" aria-hidden="true"></span>
     <header class="sheet-heading"><span class="chapter-number">REPRESENTATION</span><h2>Can multiple scales disentangle action?</h2></header>
     <div class="chapter-layout single-scene"><div class="chapter-visual ambient-figure" data-diagram="lapa">
-      <video id="representation-film" class="ambient-film" data-ambient-scene muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/representation-diagram.png?v=20261011-linked-discovery" aria-label="Single-scale and multi-scale VQ-VAE: one mixed code versus three residual scales, using the same video pair and reconstruction target" aria-describedby="representation-description"><source src="/page/midivla/videos/representation-diagram.mp4?v=20261011-linked-discovery" type="video/mp4"></video>
-      <div class="evidence-footer"><p>Reconstruction schematic &middot; Same video pair and target &middot; Token colors are illustrative</p></div>
-      <p class="sr-only" id="representation-description">A single-scale latent code can mix action and appearance. Multi-scale VQ-VAE uses 3 x 3, 4 x 4 and 5 x 5 scales connected by residual quantization. One shared codebook is used across scales. Both architectures reconstruct After conditioned on Before. Target: After is observed supervision, not a generated prediction.</p>
+      <div id="representation-diagram" class="representation-live" role="group" aria-label="Separate models: single-scale and multi-scale reconstruction" aria-describedby="representation-description">
+      <svg class="representation-model" data-model="single" viewBox="0 0 1980 420" role="img" aria-labelledby="rd-title-single">
+        <title id="rd-title-single">Single-scale VQ-VAE: a separately trained reconstruction model</title>
+        <defs>
+          <marker id="rd-flow-arrow-single" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" markerWidth="14" markerHeight="14" refX="11" refY="6" orient="auto"><path d="M2 1 L11 6 L2 11 Z" fill="#9ba9b1"/></marker>
+          <marker id="rd-context-arrow-single" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" markerWidth="14" markerHeight="14" refX="11" refY="6" orient="auto"><path d="M2 1 L11 6 L2 11 Z" fill="#78939f"/></marker>
+        </defs>
+        <g class="rd-flow" marker-end="url(#rd-flow-arrow-single)">
+          <path d="M460 220 H508"/>
+          <path id="rd-input-route-single" d="M244 265 H249 Q263 265 263 279 V354 Q263 370 279 370 H474 Q490 370 490 354 V266 Q490 250 506 250 H508"/>
+          <path d="M670 220 H928"/>
+          <path d="M1142 220 H1503"/>
+          <path d="M1665 220 H1726"/>
+        </g>
+        <path class="rd-context" id="rd-context-single" d="M244 220 H249 Q263 220 263 206 V116 Q263 100 279 100 H1574 Q1590 100 1590 116 V158" marker-end="url(#rd-context-arrow-single)"/>
+        <image id="rd-before-single" x="68" y="132" width="176" height="176" href="/page/midivla/assets/f1-start.webp" preserveAspectRatio="xMidYMid meet"/>
+        <image x="284" y="132" width="176" height="176" href="/page/midivla/assets/f1-target.webp" preserveAspectRatio="xMidYMid meet"/>
+        <image x="1738" y="132" width="176" height="176" href="/page/midivla/assets/f1-target.webp" preserveAspectRatio="xMidYMid meet"/>
+        <g class="rd-blocks"><rect x="520" y="170" width="150" height="100" rx="5"/><rect x="1515" y="170" width="150" height="100" rx="5"/></g>
+        <g class="rd-grid rd-mixed-grid" data-mixed="true" style="--rd-phase:-1s">
+          <rect class="rd-token rd-s1" x="940.00" y="130.00" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.00s"/>
+          <rect class="rd-token rd-s2" x="979.20" y="130.00" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.09s"/>
+          <rect class="rd-token rd-s3" x="1018.40" y="130.00" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.18s"/>
+          <rect class="rd-token rd-s1" x="1057.60" y="130.00" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.27s"/>
+          <rect class="rd-token rd-s2" x="1096.80" y="130.00" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.36s"/>
+          <rect class="rd-token rd-s2" x="940.00" y="169.20" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.45s"/>
+          <rect class="rd-token rd-s3" x="979.20" y="169.20" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.54s"/>
+          <rect class="rd-token rd-s1" x="1018.40" y="169.20" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.63s"/>
+          <rect class="rd-token rd-s2" x="1057.60" y="169.20" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.72s"/>
+          <rect class="rd-token rd-s3" x="1096.80" y="169.20" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.81s"/>
+          <rect class="rd-token rd-s3" x="940.00" y="208.40" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.90s"/>
+          <rect class="rd-token rd-s1" x="979.20" y="208.40" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-0.99s"/>
+          <rect class="rd-token rd-s2" x="1018.40" y="208.40" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.08s"/>
+          <rect class="rd-token rd-s3" x="1057.60" y="208.40" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.17s"/>
+          <rect class="rd-token rd-s1" x="1096.80" y="208.40" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.26s"/>
+          <rect class="rd-token rd-s1" x="940.00" y="247.60" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.35s"/>
+          <rect class="rd-token rd-s2" x="979.20" y="247.60" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.44s"/>
+          <rect class="rd-token rd-s3" x="1018.40" y="247.60" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.53s"/>
+          <rect class="rd-token rd-s1" x="1057.60" y="247.60" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.62s"/>
+          <rect class="rd-token rd-s2" x="1096.80" y="247.60" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.71s"/>
+          <rect class="rd-token rd-s2" x="940.00" y="286.80" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.80s"/>
+          <rect class="rd-token rd-s3" x="979.20" y="286.80" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.89s"/>
+          <rect class="rd-token rd-s1" x="1018.40" y="286.80" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-1.98s"/>
+          <rect class="rd-token rd-s2" x="1057.60" y="286.80" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-2.07s"/>
+          <rect class="rd-token rd-s3" x="1096.80" y="286.80" width="33.20" height="33.20" rx="2" style="--rd-token-delay:-2.16s"/>
+        </g>
+        <g class="rd-text">
+          <text class="rd-row-title" x="68" y="60">Single-scale VQ-VAE</text>
+          <text class="rd-model-note" x="1914" y="60">Independent weights</text>
+          <text class="rd-image-label" x="156" y="337">Before</text>
+          <text class="rd-image-label" x="372" y="337">After</text>
+          <text class="rd-image-label" x="1826" y="337">Target: After</text>
+          <text class="rd-block-label" x="595" y="230">Encoder</text>
+          <text class="rd-block-label" x="1590" y="230">Decoder</text>
+          <text class="rd-context-label" x="1470" y="87">Before context</text>
+          <text class="rd-grid-label rd-neutral" x="1035" y="355">One mixed latent grid</text>
+        </g>
+        <g class="rd-packets" aria-hidden="true">
+          <circle class="rd-packet rd-input-single" r="7"/>
+          <rect class="rd-packet rd-encode-single rd-s1" x="-7" y="-7" width="14" height="14" rx="2"/>
+          <rect class="rd-packet rd-decode-single rd-s1" x="-7" y="-7" width="14" height="14" rx="2"/>
+          <circle class="rd-packet rd-output-single rd-s1" r="7"/>
+          <circle class="rd-packet rd-before-single" r="7"/>
+        </g>
+      </svg>
+      <svg class="representation-model" data-model="multi" viewBox="0 0 1980 420" role="img" aria-labelledby="rd-title-multi">
+        <title id="rd-title-multi">Multi-scale VQ-VAE: a separately trained reconstruction model</title>
+        <defs>
+          <marker id="rd-flow-arrow-multi" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" markerWidth="14" markerHeight="14" refX="11" refY="6" orient="auto"><path d="M2 1 L11 6 L2 11 Z" fill="#9ba9b1"/></marker>
+          <marker id="rd-context-arrow-multi" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" markerWidth="14" markerHeight="14" refX="11" refY="6" orient="auto"><path d="M2 1 L11 6 L2 11 Z" fill="#78939f"/></marker>
+        </defs>
+        <g class="rd-flow" marker-end="url(#rd-flow-arrow-multi)">
+          <path d="M460 220 H508"/>
+          <path id="rd-input-route-multi" d="M244 265 H249 Q263 265 263 279 V354 Q263 370 279 370 H474 Q490 370 490 354 V266 Q490 250 506 250 H508"/>
+          <path d="M670 220 H742"/>
+          <path d="M926 220 H988"/>
+          <path d="M1172 220 H1234"/>
+          <path d="M1418 220 H1503"/>
+          <path d="M1665 220 H1726"/>
+        </g>
+        <path class="rd-context" id="rd-context-multi" d="M244 220 H249 Q263 220 263 206 V116 Q263 100 279 100 H1574 Q1590 100 1590 116 V158" marker-end="url(#rd-context-arrow-multi)"/>
+        <path class="rd-codebook-link" d="M834 354 V365 H1326 V354 M1080 354 V365"/>
+        <image id="rd-before-multi" x="68" y="132" width="176" height="176" href="/page/midivla/assets/f1-start.webp" preserveAspectRatio="xMidYMid meet"/>
+        <image x="284" y="132" width="176" height="176" href="/page/midivla/assets/f1-target.webp" preserveAspectRatio="xMidYMid meet"/>
+        <image x="1738" y="132" width="176" height="176" href="/page/midivla/assets/f1-target.webp" preserveAspectRatio="xMidYMid meet"/>
+        <g class="rd-blocks"><rect x="520" y="170" width="150" height="100" rx="5"/><rect x="1515" y="170" width="150" height="100" rx="5"/></g>
+        <g class="rd-grid" data-scale="1" style="--rd-phase:-0s">
+          <rect class="rd-token rd-s1" x="754.00" y="140.00" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.00s"/>
+          <rect class="rd-token rd-s1" x="809.33" y="140.00" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.09s"/>
+          <rect class="rd-token rd-s1" x="864.67" y="140.00" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.18s"/>
+          <rect class="rd-token rd-s1" x="754.00" y="195.33" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.27s"/>
+          <rect class="rd-token rd-s1" x="809.33" y="195.33" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.36s"/>
+          <rect class="rd-token rd-s1" x="864.67" y="195.33" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.45s"/>
+          <rect class="rd-token rd-s1" x="754.00" y="250.67" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.54s"/>
+          <rect class="rd-token rd-s1" x="809.33" y="250.67" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.63s"/>
+          <rect class="rd-token rd-s1" x="864.67" y="250.67" width="49.33" height="49.33" rx="2" style="--rd-token-delay:-0.72s"/>
+        </g>
+        <g class="rd-grid" data-scale="2" style="--rd-phase:-2.2s">
+          <rect class="rd-token rd-s2" x="1000.00" y="140.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.00s"/>
+          <rect class="rd-token rd-s2" x="1041.50" y="140.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.09s"/>
+          <rect class="rd-token rd-s2" x="1083.00" y="140.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.18s"/>
+          <rect class="rd-token rd-s2" x="1124.50" y="140.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.27s"/>
+          <rect class="rd-token rd-s2" x="1000.00" y="181.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.36s"/>
+          <rect class="rd-token rd-s2" x="1041.50" y="181.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.45s"/>
+          <rect class="rd-token rd-s2" x="1083.00" y="181.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.54s"/>
+          <rect class="rd-token rd-s2" x="1124.50" y="181.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.63s"/>
+          <rect class="rd-token rd-s2" x="1000.00" y="223.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.72s"/>
+          <rect class="rd-token rd-s2" x="1041.50" y="223.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.81s"/>
+          <rect class="rd-token rd-s2" x="1083.00" y="223.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.90s"/>
+          <rect class="rd-token rd-s2" x="1124.50" y="223.00" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-0.99s"/>
+          <rect class="rd-token rd-s2" x="1000.00" y="264.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-1.08s"/>
+          <rect class="rd-token rd-s2" x="1041.50" y="264.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-1.17s"/>
+          <rect class="rd-token rd-s2" x="1083.00" y="264.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-1.26s"/>
+          <rect class="rd-token rd-s2" x="1124.50" y="264.50" width="35.50" height="35.50" rx="2" style="--rd-token-delay:-1.35s"/>
+        </g>
+        <g class="rd-grid" data-scale="3" style="--rd-phase:-4.4s">
+          <rect class="rd-token rd-s3" x="1246.00" y="140.00" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.00s"/>
+          <rect class="rd-token rd-s3" x="1279.20" y="140.00" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.09s"/>
+          <rect class="rd-token rd-s3" x="1312.40" y="140.00" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.18s"/>
+          <rect class="rd-token rd-s3" x="1345.60" y="140.00" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.27s"/>
+          <rect class="rd-token rd-s3" x="1378.80" y="140.00" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.36s"/>
+          <rect class="rd-token rd-s3" x="1246.00" y="173.20" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.45s"/>
+          <rect class="rd-token rd-s3" x="1279.20" y="173.20" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.54s"/>
+          <rect class="rd-token rd-s3" x="1312.40" y="173.20" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.63s"/>
+          <rect class="rd-token rd-s3" x="1345.60" y="173.20" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.72s"/>
+          <rect class="rd-token rd-s3" x="1378.80" y="173.20" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.81s"/>
+          <rect class="rd-token rd-s3" x="1246.00" y="206.40" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.90s"/>
+          <rect class="rd-token rd-s3" x="1279.20" y="206.40" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-0.99s"/>
+          <rect class="rd-token rd-s3" x="1312.40" y="206.40" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.08s"/>
+          <rect class="rd-token rd-s3" x="1345.60" y="206.40" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.17s"/>
+          <rect class="rd-token rd-s3" x="1378.80" y="206.40" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.26s"/>
+          <rect class="rd-token rd-s3" x="1246.00" y="239.60" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.35s"/>
+          <rect class="rd-token rd-s3" x="1279.20" y="239.60" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.44s"/>
+          <rect class="rd-token rd-s3" x="1312.40" y="239.60" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.53s"/>
+          <rect class="rd-token rd-s3" x="1345.60" y="239.60" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.62s"/>
+          <rect class="rd-token rd-s3" x="1378.80" y="239.60" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.71s"/>
+          <rect class="rd-token rd-s3" x="1246.00" y="272.80" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.80s"/>
+          <rect class="rd-token rd-s3" x="1279.20" y="272.80" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.89s"/>
+          <rect class="rd-token rd-s3" x="1312.40" y="272.80" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-1.98s"/>
+          <rect class="rd-token rd-s3" x="1345.60" y="272.80" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-2.07s"/>
+          <rect class="rd-token rd-s3" x="1378.80" y="272.80" width="27.20" height="27.20" rx="2" style="--rd-token-delay:-2.16s"/>
+        </g>
+        <g class="rd-text">
+          <text class="rd-row-title" x="68" y="60">Multi-scale VQ-VAE</text>
+          <text class="rd-model-note" x="1914" y="60">Independent weights</text>
+          <text class="rd-image-label" x="156" y="337">Before</text>
+          <text class="rd-image-label" x="372" y="337">After</text>
+          <text class="rd-image-label" x="1826" y="337">Target: After</text>
+          <text class="rd-block-label" x="595" y="230">Encoder</text>
+          <text class="rd-block-label" x="1590" y="230">Decoder</text>
+          <text class="rd-context-label" x="1470" y="87">Before context</text>
+          <text class="rd-grid-label rd-s1" x="834" y="335">S1 / 3 x 3</text>
+          <text class="rd-grid-label rd-s2" x="1080" y="335">S2 / 4 x 4</text>
+          <text class="rd-grid-label rd-s3" x="1326" y="335">S3 / 5 x 5</text>
+          <text class="rd-small" x="957" y="192">r1</text>
+          <text class="rd-small" x="1203" y="192">r2</text>
+          <text class="rd-note" x="1080" y="399">One shared codebook</text>
+        </g>
+        <g class="rd-packets" aria-hidden="true">
+          <circle class="rd-packet rd-input-multi" r="7"/>
+          <rect class="rd-packet rd-encode-multi rd-s1" x="-7" y="-7" width="14" height="14" rx="2"/>
+          <rect class="rd-packet rd-residual-one rd-s2" x="-6" y="-6" width="12" height="12" rx="2"/>
+          <rect class="rd-packet rd-residual-two rd-s3" x="-6" y="-6" width="12" height="12" rx="2"/>
+          <rect class="rd-packet rd-decode-multi rd-s3" x="-7" y="-7" width="14" height="14" rx="2"/>
+          <circle class="rd-packet rd-output-multi rd-s3" r="7"/>
+          <circle class="rd-packet rd-before-multi" r="7"/>
+        </g>
+      </svg>
+      </div>
+      <div class="evidence-footer"><p><strong>Separate models.</strong> Same video pair and reconstruction objective.</p></div>
+      <p class="sr-only" id="representation-description">Two independently trained models, not two branches of one model. Each has its own Before and After inputs, encoder, decoder, and After target. A single-scale latent code can mix action and appearance. Multi-scale VQ-VAE uses 3 x 3, 4 x 4 and 5 x 5 scales connected by residual quantization. One shared codebook is used only within the multi-scale model. Each decoder receives context directly from its own Before image. Target: After is observed supervision, not a generated prediction. Token colors are illustrative.</p>
     </div></div>
     <div class="chapter-turn" data-next="finding-one"><p><span class="turn-observation">More scales. Still only a reconstruction objective.</span><strong>Is action separated, or just spread across scales?</strong><span class="turn-test">Finding 1 &middot; Perturb one scale at a time.</span></p><a href="#finding-one" aria-label="Continue to Finding 1">&darr;</a></div>
   </div>
@@ -56,7 +233,7 @@
     <p class="chapter-question">Which scales carry action?</p>
     <div class="chapter-layout single-scene">
       <div class="chapter-visual ambient-figure" data-diagram="finding-one">
-        <video id="finding-one-film" class="ambient-film" data-ambient-scene muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/finding-one-diagram.png?v=20261011-linked-discovery" aria-label="Finding 1: all twelve recorded predictions stay visible while the perturbation protocol and sensitive scales are highlighted"><source src="/page/midivla/videos/finding-one-diagram.mp4?v=20261011-linked-discovery" type="video/mp4"></video>
+        <video id="finding-one-film" class="ambient-film" data-ambient-scene data-video-controls="minimal" loop muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/finding-one-diagram.png?v=20261011-linked-discovery" aria-label="Finding 1: all twelve recorded predictions stay visible while the perturbation protocol and sensitive scales are highlighted"><source src="/page/midivla/videos/finding-one-diagram.mp4?v=20261011-linked-discovery" type="video/mp4"></video>
         <div class="evidence-footer"><p>Single recording &middot; 4 recorded stages &middot; No image interpolation</p><div class="pipeline-links"><button class="paper-link" type="button" data-open-evidence="f1-evidence-dialog">12 recorded predictions</button><button class="paper-link" type="button" data-figure="noise" data-title="Finding 1 - Original pixel disruption evidence">Paper figure</button></div></div>
       </div>
       <dialog class="evidence-dialog" id="f1-evidence-dialog" aria-labelledby="f1-evidence-title"><div class="dialog-header"><h2 id="f1-evidence-title">Finding 1 / Recorded predictions</h2><button class="icon-button" type="button" data-close-evidence aria-label="Close Finding 1 records" title="Close Finding 1 records"><img class="icon" src="/page/midivla/assets/icons/x.svg" width="18" height="18" alt=""></button></div>
@@ -87,7 +264,7 @@
     <p class="chapter-question">Where should we constrain action?</p>
     <div class="chapter-layout single-scene">
       <div class="chapter-visual ambient-figure" data-diagram="finding-two">
-        <video id="finding-two-film" class="ambient-film" data-ambient-scene muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/finding-two-diagram.png?v=20261011-linked-discovery" aria-label="Finding 2: degeneration training and all three models' test predictions in one diagram" aria-describedby="degeneration-description"><source src="/page/midivla/videos/finding-two-diagram.mp4?v=20261011-linked-discovery" type="video/mp4"></video>
+        <video id="finding-two-film" class="ambient-film" data-ambient-scene data-video-controls="minimal" loop muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/finding-two-diagram.png?v=20261011-linked-discovery" aria-label="Finding 2: degeneration training and all three models' test predictions in one diagram" aria-describedby="degeneration-description"><source src="/page/midivla/videos/finding-two-diagram.mp4?v=20261011-linked-discovery" type="video/mp4"></video>
         <div class="f2-inspection">
           <div class="f2-noise-setting"><label for="f2-scene-noise">Test noise <output id="f2-scene-noise-value" for="f2-scene-noise">100%</output></label><input id="f2-scene-noise" type="range" min="0" max="100" step="5" value="100" aria-valuetext="100% test noise"><div class="f2-noise-extents"><span>0%</span><span>21 recorded strengths</span><span>100%</span></div></div>
           <div class="f2-reading"><p><strong>Required by training:</strong> perturbing the constrained scale should return toward Before.</p><p><strong>The finding:</strong> earlier scales in g2 and g3 still alter the action. S1 has no earlier latent route.</p><div class="pipeline-links"><span>One recording &middot; 3 models &middot; 189 results</span><button class="paper-link" type="button" data-open-evidence="f2-evidence-dialog">Inspect all recordings</button><button class="paper-link" type="button" data-figure="scalenoise" data-title="Finding 2 - Aggregate paper curves, distinct from the single recording">Paper statistics</button></div></div>
@@ -132,7 +309,7 @@
 <section class="story-chapter evidence-chapter ambient-chapter" id="temporal-composition" data-chapter="composition">
   <div class="wrap"><span id="method" aria-hidden="true"></span><header class="sheet-heading"><span class="chapter-number">METHOD</span><h2>What does the first-scale bottleneck give us?</h2></header>
   <div class="chapter-layout single-scene"><div class="chapter-visual pipeline-sheet" data-diagram="composition">
-    <video id="temporal-film" class="ambient-film temporal-player" data-ambient-scene muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/temporal-pipeline.png?v=20261011-three-branch" aria-label="Full paper pipeline: dynamics reconstruction and degeneration stay visible as temporal composition unfolds below them" aria-describedby="temporal-description"><source src="/page/midivla/videos/temporal-pipeline.mp4?v=20261011-three-branch" type="video/mp4"></video>
+    <video id="temporal-film" class="ambient-film temporal-player" data-ambient-scene data-video-controls="minimal" loop muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/temporal-pipeline.png?v=20261011-three-branch" aria-label="Full paper pipeline: dynamics reconstruction and degeneration stay visible as temporal composition unfolds below them" aria-describedby="temporal-description"><source src="/page/midivla/videos/temporal-pipeline.mp4?v=20261011-three-branch" type="video/mp4"></video>
     <div class="evidence-footer"><p>Reconstruction + degeneration, extended by temporal composition.</p><div class="pipeline-links"><button class="paper-link" type="button" data-figure="framework" data-title="MiDiVLA - Original paper pipeline">Paper pipeline</button><button class="paper-link" type="button" data-figure="thirdbanch" data-title="Temporal composition - Original paper examples">Paper examples</button></div></div>
     <p class="sr-only" id="temporal-description">Finding 2 motivates a first-scale action bottleneck. The two-branch model combines dynamics reconstruction loss L_dynam, including codebook and commitment terms, with degeneration loss L_degen. Clean features reconstruct B from A; perturbing S1 before VQ targets A, with detached codebook embeddings in the degeneration branch. Both branches, predictions, targets and losses remain visible throughout. One more thing introduces temporal composition loss L_comp as a third branch unfolding below the baseline. The final pipeline shows all three branches and their weighted total objective simultaneously. The second pair contributes only the first-scale action embedding a<sub>BC</sub>. No second-pair context input. The sum uses continuous embeddings after lookup and refinement, not discrete token identifiers. The decoder receives A, the summed action, and first-pair context. Predicted C is compared with observed target C.</p>
   </div></div><div class="chapter-turn" data-next="vla-training"><p><span class="turn-observation">We have learned an action representation.</span><strong>How does it become robot supervision?</strong></p><a href="#vla-training" aria-label="Continue to VLA training">&darr;</a></div></div>
@@ -140,7 +317,7 @@
 <section class="story-chapter ambient-chapter" id="vla-training" data-chapter="vla">
   <div class="wrap"><header class="sheet-heading"><span class="chapter-number">VLA TRAINING</span><h2>How do these tokens train a VLA?</h2></header>
     <div class="chapter-layout single-scene"><div class="chapter-visual pipeline-sheet" data-diagram="vla">
-      <video id="vla-training-film" class="ambient-film" data-ambient-scene muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/vla-training.png?v=20261011-vla" aria-label="VLA training: video pseudo-labels, action-token pretraining and robot adaptation" aria-describedby="vla-training-description"><source src="/page/midivla/videos/vla-training.mp4?v=20261011-vla" type="video/mp4"></video>
+      <video id="vla-training-film" class="ambient-film" data-ambient-scene data-video-controls="minimal" loop muted playsinline preload="metadata" tabindex="0" poster="/page/midivla/videos/keyframes/vla-training.png?v=20261011-vla" aria-label="VLA training: video pseudo-labels, action-token pretraining and robot adaptation" aria-describedby="vla-training-description"><source src="/page/midivla/videos/vla-training.mp4?v=20261011-vla" type="video/mp4"></video>
       <div class="evidence-footer"><p>From the paper training pipeline &middot; Original image crops &middot; Schematic tokens</p><div class="pipeline-links"><button class="paper-link" type="button" data-figure="finetune" data-title="MiDiVLA - Original VLA training pipeline">Paper training pipeline</button></div></div>
       <p class="sr-only" id="vla-training-description">The trained dynamics encoder annotates Internet video transitions with discrete first-scale indices as pseudo action labels; higher-scale context tokens are excluded. A frozen VQGAN visual tokenizer and the LWM-Chat-1M language backbone condition latent-action prediction on image and instruction tokens. The autoregressive loss supervises only action-token positions. For robot adaptation, the pretrained VLA is fine-tuned end-to-end on a small set of trajectories with ground-truth low-level actions. An executable action head is attached after the penultimate latent-action layer, and the latent-action head remains auxiliary supervision. At execution the policy uses the current image and instruction, with no future frame. Colored blocks are schematic, not measured code values.</p>
     </div></div>
